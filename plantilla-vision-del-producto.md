@@ -1,24 +1,13 @@
-# Visión del producto
-
-> **Plantilla del curso · Ingeniería de Software I · SIS3407**
-> Este documento es el primer entregable del semestre y la base de todo lo que viene después.
-> Se entrega completo en la **semana 4** y se presenta ante el grupo.
->
-> **Cómo usarla:** copia este archivo a tu repositorio como `docs/vision-del-producto.md`, borra las instrucciones en gris de cada apartado y escribe tu contenido en su lugar. Conserva los títulos.
-
----
-
-**Autor:**
-**Fecha de la última versión:**
+Jimena Morales Gómez
+18/agosto/2026
 **Repositorio:**
-
----
 
 ## 1. Descripción del sistema
 
-*Instrucción: nombre del sistema y qué hace, en un párrafo que cualquier persona entienda sin ser del área. Si necesitas usar una palabra técnica para explicarlo, todavía no está listo.*
+Es una plataforma que permite organizar en un solo lugar las actividades administrativas del negocio, incluyendo el control de inventario y productos vendidos, la organización de horarios del personal, la asignación de tareas de limpieza y el seguimiento de cobros de piso. El sistema busca facilitar el control diario del establecimiento y proporcionar a la administración información actualizada sobre sus operaciones
 
-**Nombre del sistema:**
+**Nombre del sistema:** 
+Sistema administrativo communa
 
 **Descripción:**
 
@@ -26,11 +15,14 @@
 
 ## 2. Problema y usuarios
 
-*Instrucción: qué problema resuelve, a quién le sirve y, muy importante, qué hace esa gente hoy para arreglárselas sin el sistema. Esa última parte es la que revela el problema real.*
+El negocio tiene dificultades para controlar el **inventario, las ventas, los horarios, la limpieza y los cobros de piso**. El sistema serviría principalmente a la **administradora y a los empleados**. Actualmente, estas actividades se organizan de forma manual y por separado, lo que dificulta saber qué se ha realizado, qué está pendiente y quién es responsable de cada tarea.
+
 
 **El problema:**
 
 **Cómo se resuelve hoy sin el sistema:**
+
+Actualmente, el personal se organiza de forma manual, usando mensajes, anotaciones y acuerdos entre ellos para controlar inventario, ventas, horarios, limpieza y cobros.
 
 **Usuarios del sistema:**
 
