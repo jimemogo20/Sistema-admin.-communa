@@ -1,13 +1,14 @@
 Jimena Morales Gómez
 18/agosto/2026
+
 **Repositorio:**
 
 ## 1. Descripción del sistema
 
-Es una plataforma que permite organizar en un solo lugar las actividades administrativas del negocio, incluyendo el control de inventario y productos vendidos, la organización de horarios del personal, la asignación de tareas de limpieza y el seguimiento de cobros de piso. El sistema busca facilitar el control diario del establecimiento y proporcionar a la administración información actualizada sobre sus operaciones
+El sistema permitirá **administrar las reservaciones y el uso de un cuarto que se renta por paquetes de 5 o 10 sesiones**. Permitirá consultar horarios disponibles, reservar el espacio y llevar el control de las sesiones utilizadas y restantes de cada paquete, evitando empalmes y usos sin pago.
 
 **Nombre del sistema:** 
-Sistema administrativo communa
+Sistema de citas communa
 
 **Descripción:**
 
@@ -15,28 +16,31 @@ Sistema administrativo communa
 
 ## 2. Problema y usuarios
 
-El negocio tiene dificultades para controlar el **inventario, las ventas, los horarios, la limpieza y los cobros de piso**. El sistema serviría principalmente a la **administradora y a los empleados**. Actualmente, estas actividades se organizan de forma manual y por separado, lo que dificulta saber qué se ha realizado, qué está pendiente y quién es responsable de cada tarea.
+Actualmente existen problemas para **controlar las reservaciones y los paquetes de uso del cuarto**. En ocasiones las citas se empalman y también puede ocurrir que una persona termine las sesiones de su paquete y continúe utilizando el espacio sin que se realice un nuevo cobro.
 
+El sistema servirá principalmente a la administradora, quien necesita controlar las reservaciones y pagos, y a las personas que rentan el cuarto, quienes necesitan consultar disponibilidad, reservar horarios y conocer cuántas sesiones les quedan.
 
 **El problema:**
 
 **Cómo se resuelve hoy sin el sistema:**
 
-Actualmente, el personal se organiza de forma manual, usando mensajes, anotaciones y acuerdos entre ellos para controlar inventario, ventas, horarios, limpieza y cobros.
+Actualmente, el personal se organiza de forma manual, usando mensajes, anotaciones y acuerdos entre ellos para controlar horarios y cobros.
 
 **Usuarios del sistema:**
 
 | Tipo de usuario | Qué necesita del sistema | Qué le preocupa |
 |---|---|---|
-| | | |
-| | | |
-| | | |
+| Administradora| Controlar reservaciones, paquetes comprados y sesiones utilizadas.|Que se empalmen citas o alguien utilice el cuarto después de terminar su paquete sin pagar.|
+| Persona que renta| Consultar horarios disponibles, reservar y saber cuántas sesiones le quedan.| Llegar y encontrar el cuarto ocupado o no saber cuántos usos le quedan.|
 
-*Instrucción: necesitas al menos dos tipos de usuario con necesidades distintas. Si los dos quieren exactamente lo mismo, probablemente sean el mismo usuario.*
 
 **Un conflicto entre usuarios:**
 
-*Instrucción: describe algo que un usuario quiera y que a otro le estorbe. Ahí está tu primera decisión de diseño real.*
+La persona que renta quiere poder reservar fácilmente el horario que necesita, mientras que la administradora necesita restringir las reservaciones cuando el horario ya está ocupado o cuando el paquete ya no tiene sesiones disponibles
+
+**Visión**
+
+No sabía si era el mismo negocio o no 
 
 ---
 
