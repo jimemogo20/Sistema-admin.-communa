@@ -46,52 +46,47 @@ No sabía si era el mismo negocio o no
 
 ## 3. Alcance
 
-*Instrucción: lo que escribes en "fuera del alcance" es lo que después evita que el proyecto crezca sin control. Sé específico: "reportes" no dice nada, "reportes de ventas mensuales exportables a PDF" sí.*
 
 ### Dentro del alcance
 
--
--
--
--
+- Consultar los horarios disponibles del cuarto.
+- Crear, modificar y cancelar reservaciones
+- Registrar paquetes de 5 o 10 usos y llevar el control de las sesiones restantes
+- Evitar reservaciones empalmadas y avisar cuando un paquete se haya terminado.
 
 ### Explícitamente fuera del alcance
 
--
--
--
+- Procesamiento de pagos en línea
+- Administración de citas de dermatología o clases de yoga
+- Administración de otros espacios o cuartos del negocio
 
 **Por qué queda fuera:**
 
-*Instrucción: para al menos una de las exclusiones, explica la razón. Puede ser tiempo, complejidad, o que no aporta al problema central.*
+El sistema se enfocará únicamente en la renta y uso del cuarto, para mantener un alcance manejable. Por ejemplo, integrar pagos en línea agregaría complejidad y no es necesario para solucionar el problema principal, que es controlar las reservaciones y los usos disponibles de cada paquete
 
 ---
 
 ## 4. Tipo de sistema y restricciones
 
-*Instrucción: identifica de qué tipo es tu sistema y qué te obliga a garantizar ese tipo. Un sistema de información y un sistema crítico no se diseñan igual.*
-
-**Tipo de sistema:**
-
-*(De información · Embebido · Crítico · Web y SaaS · De datos y análisis)*
+Sistema de información
 
 **Por qué es de ese tipo:**
+
+Porque permite registrar, consultar y administrar información relacionada con las reservaciones del cuarto y los paquetes de usos de cada persona.
 
 **Atributos de calidad que impone:**
 
 | Atributo | Por qué importa en mi caso | Qué pasa si no se cumple |
 |---|---|---|
-| | | |
-| | | |
-| | | |
+| Confiabilidad| Las reservaciones y sesiones restantes deben registrarse correctamente.| Podrían empalmarse citas o cobrarse incorrectamente los usos.|
+| Usabilidad | Debe ser fácil consultar disponibilidad y hacer una reservación. | Los usuarios podrían preferir seguir organizándose manualmente.|
+| Seguridad |No todos los usuarios deben poder modificar paquetes o sesiones. | Un usuario podría modificar información que solo corresponde a la administración.|
 
 **Reglas de negocio que ya identifiqué:**
 
-*Instrucción: reglas que no son obvias desde fuera y que alguien que conoce el dominio tendría que explicarte. Si no encuentras ninguna, tu caso puede ser demasiado simple.*
-
-1.
-2.
-3.
+1. Un cuarto no puede estar reservado por dos personas en el mismo horario.
+2. Los paquetes disponibles son de 5 o 10 usos y cada uso debe quedar registrado.
+3. Cuando un paquete llega a 0 usos, la persona no puede seguir utilizando el cuarto con ese paquete y debe adquirir uno nuevo.
 
 ---
 
