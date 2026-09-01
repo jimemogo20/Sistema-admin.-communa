@@ -97,10 +97,10 @@ Es un sistema Web y SaaS porque las personas necesitan consultar reservaciones, 
 ## 5. Ciclo de vida elegido
 
 **Modelo elegido:**
-Prototipado rápido
+Ágil
 **Por qué le conviene a este proyecto:**
 
-Se eligió el modelo de Prototipado rápido porque, aunque el problema principal ya está identificado, todavía existen algunos requisitos y reglas de negocio que necesitan ser confirmados con los usuarios. Crear un prototipo permitirá mostrar cómo funcionarían las reservaciones, la consulta de horarios y el control de los paquetes antes de desarrollar el sistema completo. De esta manera, los usuarios podrán dar retroalimentación y se podrán realizar cambios desde etapas tempranas, evitando que una decisión incorrecta sea más costosa de modificar posteriormente.
+El modelo ágil le conviene al proyecto porque, aunque ya se identificó el problema principal, algunos requisitos pueden cambiar cuando las personas que realmente utilizan el cuarto comiencen a revisar y probar el sistema.
 
 ### Alternativas descartadas
 
