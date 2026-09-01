@@ -1,46 +1,49 @@
 Jimena Morales Gómez
-18/agosto/2026
+31/agosto/2026
 
-**Repositorio:**
+**Sistema administrativo communa:**
 
 ## 1. Descripción del sistema
 
-El sistema permitirá **administrar las reservaciones y el uso de un cuarto que se renta por paquetes de 5 o 10 sesiones**. Permitirá consultar horarios disponibles, reservar el espacio y llevar el control de las sesiones utilizadas y restantes de cada paquete, evitando empalmes y usos sin pago.
-
 **Nombre del sistema:** 
-Sistema de citas communa
+Sistema de reservaciones y control de paquetes
 
 **Descripción:**
+
+El sistema permitirá llevar un mejor control de las reservaciones de un cuarto que utilizan diferentes personas para atender a sus clientes. Permitirá consultar los horarios disponibles, registrar reservaciones y evitar que dos personas aparten el cuarto en el mismo horario. Además, llevará el control de paquetes de 5 y 10 usos, descontando las sesiones utilizadas y mostrando cuándo un paquete se ha terminado para que se pueda adquirir uno nuevo.
 
 ---
 
 ## 2. Problema y usuarios
 
-Actualmente existen problemas para **controlar las reservaciones y los paquetes de uso del cuarto**. En ocasiones las citas se empalman y también puede ocurrir que una persona termine las sesiones de su paquete y continúe utilizando el espacio sin que se realice un nuevo cobro.
+Actualmente las reservaciones del cuarto no tienen un control centralizado, por lo que existe la posibilidad de que dos personas quieran utilizarlo en el mismo horario. Además, se manejan paquetes de 5 y 10 usos y puede ocurrir que una persona termine las sesiones de su paquete y no se registre o cobre correctamente la compra de uno nuevo.
 
-El sistema servirá principalmente a la administradora, quien necesita controlar las reservaciones y pagos, y a las personas que rentan el cuarto, quienes necesitan consultar disponibilidad, reservar horarios y conocer cuántas sesiones les quedan.
+Esto puede provocar conflictos en los horarios, confusión sobre los usos disponibles y pérdidas económicas por falta de control en la renovación de los paquetes.
 
 **El problema:**
 
 **Cómo se resuelve hoy sin el sistema:**
 
-Actualmente, el personal se organiza de forma manual, usando mensajes, anotaciones y acuerdos entre ellos para controlar horarios y cobros.
+Actualmente los horarios y los usos de los paquetes se revisan de manera manual, las personas tienen que comunicarse para saber si el cuarto está disponible y llevar por separado el conteo de las sesiones utilizadas. Cuando un paquete termina, también se tiene que revisar manualmente si corresponde comprar uno nuevo.
 
 **Usuarios del sistema:**
 
 | Tipo de usuario | Qué necesita del sistema | Qué le preocupa |
 |---|---|---|
-| Administradora| Controlar reservaciones, paquetes comprados y sesiones utilizadas.|Que se empalmen citas o alguien utilice el cuarto después de terminar su paquete sin pagar.|
+| Administradora| Consultar todas las reservaciones, controlar los paquetes y saber cuándo una persona terminó sus usos.|Que se empalmen citas o alguien utilice el cuarto después de terminar su paquete sin pagar.|
 | Persona que renta| Consultar horarios disponibles, reservar y saber cuántas sesiones le quedan.| Llegar y encontrar el cuarto ocupado o no saber cuántos usos le quedan.|
 
 
 **Un conflicto entre usuarios:**
 
-La persona que renta quiere poder reservar fácilmente el horario que necesita, mientras que la administradora necesita restringir las reservaciones cuando el horario ya está ocupado o cuando el paquete ya no tiene sesiones disponibles
+La persona que utiliza el cuarto busca tener flexibilidad para reservar el horario que más le convenga, pero la administradora necesita mantener un control para evitar que dos personas ocupen el mismo horario y asegurarse de que los paquetes utilizados estén registrados correctamente.
+
+Por esta razón, el sistema debe permitir cierta flexibilidad al reservar, pero sin permitir empalmes ni perder el control de los usos disponibles.
 
 **Visión**
 
 No sabía si era el mismo negocio o no 
+No entendía lo de los paquetes 
 
 ---
 
@@ -49,45 +52,45 @@ No sabía si era el mismo negocio o no
 
 ### Dentro del alcance
 
-- Consultar los horarios disponibles del cuarto.
-- Crear, modificar y cancelar reservaciones
-- Registrar paquetes de 5 o 10 usos y llevar el control de las sesiones restantes
-- Evitar reservaciones empalmadas y avisar cuando un paquete se haya terminado.
+- Registra reservaciones indicando la persona, fecha y horario.
+- Muestra los horarios disponibles y ocupados del cuarto.
+- Impide registrar dos reservaciones que utilicen el cuarto en el mismo horario.
+- Registra y descuenta los usos correspondientes de los paquetes de 5 o 10 sesiones.
+- Notifica cuando un paquete llega a cero usos e indica que corresponde adquirir uno nuevo.
 
 ### Explícitamente fuera del alcance
 
-- Procesamiento de pagos en línea
-- Administración de citas de dermatología o clases de yoga
-- Administración de otros espacios o cuartos del negocio
+- El sistema no procesa pagos ni realiza cobros bancarios por la compra de paquetes.
+- El sistema no administra inventario de productos, materiales o equipo utilizado dentro del negocio.
+- El sistema no administra citas personales entre cada profesional y sus propios clientes; únicamente controla la reservación del cuarto compartido
 
 **Por qué queda fuera:**
 
-El sistema se enfocará únicamente en la renta y uso del cuarto, para mantener un alcance manejable. Por ejemplo, integrar pagos en línea agregaría complejidad y no es necesario para solucionar el problema principal, que es controlar las reservaciones y los usos disponibles de cada paquete
+El procesamiento de pagos queda fuera porque el problema principal que buscamos resolver es el control de reservaciones y de los usos de los paquetes, incluir pagos implicaría agregar funciones financieras y posiblemente servicios externos que aumentarían la complejidad del proyecto sin ser necesarios para solucionar el problema principal.
 
 ---
 
 ## 4. Tipo de sistema y restricciones
 
-Sistema de información
+Web y SaaS
 
 **Por qué es de ese tipo:**
 
-Porque permite registrar, consultar y administrar información relacionada con las reservaciones del cuarto y los paquetes de usos de cada persona.
+Es un sistema Web y SaaS porque las personas necesitan consultar reservaciones, disponibilidad y usos de sus paquetes desde diferentes dispositivos sin depender de una computadora específica. La información se encontraría centralizada y los usuarios autorizados podrían acceder al sistema mediante Internet, ya que, permite que todos consulten la misma información actualizada, lo cual es importante para evitar reservaciones duplicadas
 
 **Atributos de calidad que impone:**
 
 | Atributo | Por qué importa en mi caso | Qué pasa si no se cumple |
 |---|---|---|
-| Confiabilidad| Las reservaciones y sesiones restantes deben registrarse correctamente.| Podrían empalmarse citas o cobrarse incorrectamente los usos.|
-| Usabilidad | Debe ser fácil consultar disponibilidad y hacer una reservación. | Los usuarios podrían preferir seguir organizándose manualmente.|
-| Seguridad |No todos los usuarios deben poder modificar paquetes o sesiones. | Un usuario podría modificar información que solo corresponde a la administración.|
+| Disponibilidad| Las personas necesitan consultar los horarios antes de realizar una reservación| Podrían volver a comunicarse manualmente y existirían problemas para saber si el cuarto está disponible|
+| Integridad de los datos | El número de usos disponibles y las reservaciones deben mantenerse correctos | Se podrían descontar usos incorrectamente, permitir reservaciones empalmadas o solicitar un nuevo paquete cuando todavía existen usos disponibles|
+| Usabilidad |El sistema será utilizado para acciones sencillas y frecuentes, como consultar horarios y reservar | Si resulta complicado, los usuarios podrían preferir continuar realizando el proceso manualmente|
 
 **Reglas de negocio que ya identifiqué:**
 
-1. Un cuarto no puede estar reservado por dos personas en el mismo horario.
-2. Los paquetes disponibles son de 5 o 10 usos y cada uso debe quedar registrado.
-3. Cuando un paquete llega a 0 usos, la persona no puede seguir utilizando el cuarto con ese paquete y debe adquirir uno nuevo.
-
+1. Una reservación no puede registrarse si el cuarto ya está reservado por otra persona durante ese mismo horario.
+2. Los paquetes disponibles son de 5 o 10 usos y cada sesión realizada descuenta un uso del paquete correspondiente.
+3. Cuando una persona utiliza el último uso de su paquete, puede terminar esa sesión normalmente, pero al salir debe adquirir un nuevo paquete para poder continuar utilizando el cuarto posteriormente.
 ---
 
 ## 5. Ciclo de vida elegido
@@ -95,34 +98,33 @@ Porque permite registrar, consultar y administrar información relacionada con l
 *Instrucción: este apartado se trabaja en la semana 3, después de ver los modelos de desarrollo. La justificación pesa más que la elección: no hay un modelo correcto, hay uno defendible para tu caso.*
 
 **Modelo elegido:**
-
+Ágil
 **Por qué le conviene a este proyecto:**
 
-*Instrucción: argumenta con las características reales de tu caso. Estabilidad de los requisitos, disponibilidad del cliente, nivel de riesgo, tamaño del equipo, frecuencia de entregas esperada.*
+El modelo ágil le conviene al proyecto porque, aunque ya se identificó el problema principal, algunos requisitos pueden cambiar cuando las personas que realmente utilizan el cuarto comiencen a revisar y probar el sistema.
+
+La administradora y las personas que utilizan el espacio pueden estar disponibles para dar retroalimentación durante el desarrollo. Esto permitiría realizar entregas pequeñas y revisar primero funciones como la consulta de horarios y las reservaciones, y posteriormente el control de paquetes y usos.
+
+El principal riesgo del proyecto no es técnico, ya que las funciones que se plantean son relativamente conocidas. El mayor riesgo es no representar correctamente la forma en la que actualmente funciona el negocio, especialmente situaciones como cuándo se descuenta un uso, qué sucede con una cancelación o en qué momento se considera terminado un paquete.
+
+Por esto, trabajar en ciclos cortos permitiría enseñar avances a los usuarios y modificar las reglas antes de que el sistema esté completamente terminado.
+
+Además, al ser un proyecto realizado durante un semestre y por un equipo pequeño, se pueden definir entregas pequeñas y frecuentes en lugar de esperar hasta el final para validar todo el sistema.
 
 ### Alternativas descartadas
 
-**Alternativa 1:**
+**Cascada:**
 
-*Por qué la descarté:*
+La descarté porque cascada funciona mejor cuando los requisitos son estables y conocidos desde el principio. En este proyecto existen reglas que podrían cambiar o aclararse cuando los usuarios vean el sistema funcionando. Por ejemplo, podrían surgir cambios sobre cuándo descontar un uso, cómo manejar una cancelación o qué información mostrar al terminar un paquete.
 
-**Alternativa 2:**
+Si utilizáramos cascada y alguno de estos requisitos cambiara después de terminar el diseño, realizar la modificación podría implicar regresar a etapas anteriores.
 
-*Por qué la descarté:*
+**Modelo V:**
+
+El Modelo V sería más adecuado para un sistema con requisitos muy estables y verificables, especialmente cuando existen consecuencias graves ante una falla o se requiere evidencia formal de validación.
+
+En este proyecto no se trata de un sistema crítico ni existe actualmente una necesidad de certificación o auditoría formal. Nuestro principal riesgo está relacionado con entender correctamente las necesidades de los usuarios y adaptar las reglas del negocio, por lo que un modelo con mayor posibilidad de cambios y retroalimentación resulta más adecuado.
 
 ---
 
-## Antes de entregar
 
-Reviso que el documento cumpla lo siguiente:
-
-- [ ] La descripción del apartado 1 se entiende sin ser del área
-- [ ] Hay al menos dos tipos de usuario con necesidades distintas
-- [ ] Identifiqué un conflicto real entre usuarios
-- [ ] El alcance dice qué queda fuera, no solo qué queda dentro
-- [ ] Las exclusiones son específicas, no genéricas
-- [ ] Identifiqué el tipo de sistema y al menos dos atributos de calidad
-- [ ] Anoté al menos tres reglas de negocio no obvias
-- [ ] Justifiqué el ciclo de vida contra dos alternativas descartadas
-- [ ] El documento está en mi repositorio y se puede leer desde el navegador
-- [ ] Borré todas las instrucciones en cursiva de la plantilla
