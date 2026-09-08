@@ -73,7 +73,7 @@ El procesamiento de pagos queda fuera porque el problema principal que buscamos 
 
 ## 4. Tipo de sistema y restricciones
 
-Web y SaaS
+Web
 
 **Por qué es de ese tipo:**
 
@@ -98,6 +98,7 @@ Es un sistema Web y SaaS porque las personas necesitan consultar reservaciones, 
 
 **Modelo elegido:**
 Ágil
+
 **Por qué le conviene a este proyecto:**
 
 El modelo ágil le conviene al proyecto porque, aunque ya se identificó el problema principal, algunos requisitos pueden cambiar cuando las personas que realmente utilizan el cuarto comiencen a revisar y probar el sistema.
