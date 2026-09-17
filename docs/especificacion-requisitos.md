@@ -1,202 +1,151 @@
-# Especificación de requisitos
+# Guía de redacción de requisitos
 
-## 1. Requisitos funcionales
-
-### RF-001 — Registrar reservación
-
-**Descripción:**  
-El sistema registra una reservación del cuarto indicando usuario, fecha y horario.
-
-**Origen:**  
-Problema identificado en el proceso actual del negocio.
-
-**Prioridad:**  
-Imprescindible.
-
-**Criterio de aceptación:**  
-Al registrar una reservación con usuario, fecha y horario válidos, esta aparece registrada en el sistema.
-
-**Relacionado con:**  
-RF-002 y RF-003.
+> **Material de consulta · Ingeniería de Software I · SIS3407**  
+> Este documento no se entrega. Es la referencia para escribir los requisitos de tu proyecto y para revisar los de tu dupla. La plantilla que sí se llena y se entrega es `especificacion-requisitos.md`.
 
 ---
 
-### RF-002 — Consultar disponibilidad
+## 1. Cómo se nombra un requisito
 
-**Descripción:**  
-El sistema muestra los horarios disponibles y ocupados del cuarto para una fecha seleccionada.
+Cada requisito tiene un identificador que **nunca cambia y nunca se reutiliza**. Si un requisito se elimina, su identificador queda muerto: no se le asigna a otro.
 
-**Origen:**  
-Necesidad identificada a partir de los empalmes que ocurren actualmente.
+Esa estabilidad no es burocracia. Es lo que permite escribir "el cambio afecta a RF-007 y RNF-SEG-002" sin repetir el texto completo, y es lo que va a hacer posible el análisis de impacto de la semana 15.
 
-**Prioridad:**  
-Imprescindible.
+### Requisitos funcionales
 
-**Criterio de aceptación:**  
-Al seleccionar una fecha, el sistema muestra qué horarios se encuentran disponibles y cuáles están ocupados.
+```
+RF-###
+```
 
-**Relacionado con:**  
-RF-001 y RF-003.
+`RF-001`, `RF-002`, `RF-003`… Numeración consecutiva, sin agrupar por módulo.
 
----
+### Requisitos no funcionales
 
-### RF-003 — Evitar empalmes
+```
+RNF-<ATRIBUTO>-###
+```
 
-**Descripción:**  
-El sistema impide registrar una reservación cuando el cuarto ya se encuentra reservado en el mismo horario.
-
-**Origen:**  
-Problema identificado en el proceso actual del negocio.
-
-**Prioridad:**  
-Imprescindible.
-
-**Criterio de aceptación:**  
-Si existe una reservación para un horario determinado y se intenta registrar otra que coincide con ese horario, el sistema rechaza la nueva reservación.
-
-**Relacionado con:**  
-RF-001 y RF-002.
+| Atributo de calidad | Clave | Ejemplo |
+|---|---|---|
+| Rendimiento | REN | `RNF-REN-001` |
+| Seguridad | SEG | `RNF-SEG-001` |
+| Usabilidad | USA | `RNF-USA-001` |
+| Confiabilidad | CON | `RNF-CON-001` |
+| Mantenibilidad | MAN | `RNF-MAN-001` |
+| Escalabilidad | ESC | `RNF-ESC-001` |
 
 ---
 
-### RF-004 — Registrar paquetes
+## 2. Cómo se redacta un requisito funcional
 
-**Descripción:**  
-El sistema registra paquetes de 5 o 10 usos asociados a un usuario.
+```
+El sistema <verbo firme> <objeto> <condición o restricción>
+```
 
-**Origen:**  
-Regla actual del negocio.
+**Verbos firmes:** registra, calcula, notifica, impide, genera, valida, muestra, envía, asigna.
 
-**Prioridad:**  
-Imprescindible.
+**Evitar:** debería, podría, de preferencia, permite que el usuario pueda, tratará de.
 
-**Criterio de aceptación:**  
-Al registrar un paquete para un usuario, el sistema permite seleccionar un paquete de 5 o 10 usos y lo asocia al usuario correspondiente.
-
-**Relacionado con:**  
-RF-005.
+> ✓ El sistema impide agendar dos citas en el mismo horario con el mismo veterinario.
+>
+> ✕ El sistema debería tratar de evitar empalmes en la agenda.
 
 ---
 
-### RF-005 — Consultar usos disponibles
+## 3. Cómo se redacta un requisito no funcional
 
-**Descripción:**  
-El sistema muestra la cantidad de usos disponibles del paquete asociado a cada usuario.
+```
+<Sujeto> <comportamiento esperado> <métrica o condición medible>
+```
 
-**Origen:**  
-Problema identificado en el control actual de los paquetes.
+Todo requisito no funcional necesita un número, un límite o una condición comprobable. Si no lo tiene, todavía no es un requisito: es una aspiración.
 
-**Prioridad:**  
-Imprescindible.
-
-**Criterio de aceptación:**  
-Al consultar la información de un usuario con un paquete activo, el sistema muestra la cantidad de usos que tiene disponibles.
-
-**Relacionado con:**  
-RF-004.
+> ✓ El historial completo de un paciente se despliega en menos de tres segundos.
+>
+> ✕ El sistema debe ser rápido al consultar el historial.
 
 ---
 
-## 2. Requisitos no funcionales
+## 4. Reglas que aplican a todos
 
-### RNF-CON-001 — Confiabilidad
+**Una sola idea por requisito.** Si aparece una "y" que une dos comportamientos distintos, son dos requisitos.
 
-**Atributo de calidad:**  
-Confiabilidad.
+**Describe qué debe pasar, no cómo implementarlo.** La solución técnica se decide en la Unidad 3, no aquí.
 
-**Descripción:**  
-Una reservación confirmada permanece registrada hasta que sea modificada o cancelada mediante una acción autorizada.
+**Debe poder convertirse en una prueba.** Si no hay forma de comprobar si se cumplió, reescríbelo.
 
-**Métrica:**  
-El 100% de las reservaciones confirmadas deben permanecer registradas mientras no exista una acción de modificación o cancelación.
+**Debe caber en el alcance** definido en la Visión del producto. Si no cabe, va a una lista de ideas futuras, no al documento.
 
-**Origen:**  
-Derivado del tipo de sistema de información y del atributo de confiabilidad identificado en la Visión del producto.
-
-**Prioridad:**  
-Imprescindible.
-
-**Por qué importa:**  
-La pérdida de una reservación podría provocar que un horario aparezca disponible cuando realmente ya está ocupado, generando un empalme.
-
-**Afecta a:**  
-RF-001, RF-002 y RF-003.
+**Dos personas distintas deben entenderlo igual.** Si tu dupla lo interpretó de otra forma, el requisito está mal escrito. No es cuestión de quién tiene razón.
 
 ---
 
-### RNF-USA-001 — Usabilidad
+## 5. Los campos de cada ficha
 
-**Atributo de calidad:**  
-Usabilidad.
+### Requisito funcional
 
-**Descripción:**  
-Un usuario nuevo completa el registro de una reservación sin capacitación previa.
+| Campo | Qué va ahí |
+|---|---|
+| **Descripción** | El requisito redactado con la fórmula del punto 2. |
+| **Origen** | De dónde salió: entrevista y fecha, documento revisado, observación, o supuesto propio. |
+| **Prioridad** | Imprescindible, importante o deseable. |
+| **Criterio de aceptación** | Cómo se comprueba que se cumplió. Redáctalo como si fuera una prueba. |
+| **Relacionado con** | Otros requisitos con los que se conecta, depende o entra en conflicto. |
 
-**Métrica:**  
-El usuario debe completar el registro de una reservación sin recibir instrucciones adicionales durante la prueba.
+### Requisito no funcional
 
-**Origen:**  
-Derivado del atributo de usabilidad identificado en la Visión del producto.
-
-**Prioridad:**  
-Importante.
-
-**Por qué importa:**  
-Si el proceso de reservación resulta difícil de entender, los usuarios podrían continuar utilizando métodos externos para organizar sus horarios.
-
-**Afecta a:**  
-RF-001 y RF-002.
-
----
-
-### RNF-CON-002 — Confiabilidad
-
-**Atributo de calidad:**  
-Confiabilidad.
-
-**Descripción:**  
-Los usos disponibles mostrados para un paquete coinciden con los usos registrados para ese paquete.
-
-**Métrica:**  
-En el 100% de las consultas, la cantidad mostrada debe coincidir con la cantidad de usos disponibles registrada para el paquete.
-
-**Origen:**  
-Derivado del atributo de confiabilidad identificado en la Visión del producto.
-
-**Prioridad:**  
-Imprescindible.
-
-**Por qué importa:**  
-Un conteo incorrecto puede provocar que una persona continúe utilizando el cuarto después de terminar su paquete o que se le indique incorrectamente que ya no tiene usos disponibles.
-
-**Afecta a:**  
-RF-004 y RF-005.
+| Campo | Qué va ahí |
+|---|---|
+| **Atributo de calidad** | Cuál de los seis atributos representa. |
+| **Descripción** | El requisito redactado con la fórmula del punto 3. |
+| **Métrica** | El valor o condición que se mide, y bajo qué circunstancias. |
+| **Origen** | De dónde salió, incluyendo si se derivó del tipo de sistema. |
+| **Prioridad** | Imprescindible, importante o deseable. |
+| **Por qué importa** | Qué pasa si no se cumple. Es lo que justifica el límite elegido. |
+| **Afecta a** | Qué requisitos funcionales quedan condicionados por este. |
 
 ---
 
-## 3. Verificación de los requisitos
+## 6. Sobre el campo Origen
 
-Los ocho requisitos fueron redactados de manera que puedan convertirse en pruebas concretas.
+Es el campo más importante del curso y el que más se descuida.
 
-Por ejemplo:
+Sirve para distinguir tres cosas que se ven iguales en el documento pero no lo son:
 
-- Para RF-003 se puede registrar primero una reservación y después intentar registrar otra en el mismo horario. El sistema debe rechazar la segunda.
-- Para RF-004 se puede registrar un paquete y comprobar que quede asociado al usuario correspondiente.
-- Para RF-005 se puede consultar a un usuario con un paquete registrado y comprobar que aparezca la cantidad de usos disponibles.
-- Para RNF-CON-001 se puede registrar una reservación, volver a consultarla y comprobar que la información permanezca registrada.
-- Para RNF-USA-001 se puede pedir a un usuario nuevo que registre una reservación sin darle capacitación previa.
+- Lo que **el cliente confirmó** explícitamente.
+- Lo que **dedujimos** de un documento o de observar el proceso.
+- Lo que **estamos suponiendo** porque nos pareció obvio.
+
+Un requisito con origen "supuesto propio" no está mal por serlo. Está mal cuando nadie sabe que lo es, porque entonces se trata como verdad confirmada y nunca se valida.
+
+Después de la entrevista de elicitación, revisa cuántos de tus supuestos sobrevivieron.
 
 ---
 
-## 4. Supuestos por validar
+## 7. Los seis defectos más comunes
 
-Durante la elaboración de los requisitos se identificaron aspectos que todavía necesitan ser confirmados con los usuarios del sistema. Estos puntos no se consideran reglas definitivas hasta realizar la entrevista de elicitación.
+| Defecto | Cómo se ve | Cómo se arregla |
+|---|---|---|
+| Adjetivo sin medida | "debe ser rápido" | Sustituir por un número |
+| Dos en uno | "seguro y fácil de usar" | Separar en dos requisitos |
+| Solución disfrazada | "debe usar una base de datos en la nube" | Escribir la necesidad, no la técnica |
+| Condicional vago | "debería, de preferencia" | Usar formulación firme |
+| Sin criterio | No se sabe cómo comprobarlo | Agregar criterio de aceptación |
+| Ambiguo | Dos lecturas posibles | Reescribir hasta que solo haya una |
 
-- ¿En qué momento se descuenta un uso del paquete: al reservar, al comenzar la sesión o al terminarla?
-- ¿Qué sucede con el uso si una reservación es cancelada?
-- ¿Qué ocurre si la persona no se presenta a su reservación?
-- ¿Una reservación ya registrada puede cambiarse de horario?
-- ¿Quién tiene autorización para modificar o cancelar una reservación?
-- ¿Existe una duración definida para cada uso del cuarto?
-- ¿Los paquetes siempre serán únicamente de 5 y 10 usos?
-- Después de terminar un paquete, ¿en qué momento debe registrarse la compra del siguiente paquete?
+---
+
+## 8. Lista de verificación para revisar
+
+Úsala para revisar tu propio documento y el de tu dupla.
+
+- [ ] Todos los requisitos tienen identificador único y ninguno está repetido.
+- [ ] Cada requisito expresa una sola idea.
+- [ ] Cada requisito funcional tiene criterio de aceptación comprobable.
+- [ ] Cada requisito no funcional tiene una métrica, no solo un adjetivo.
+- [ ] El campo Origen distingue lo confirmado de lo supuesto.
+- [ ] Hay al menos un requisito no funcional por cada atributo de calidad que impone el tipo de sistema.
+- [ ] Ningún requisito impone una solución técnica.
+- [ ] Todos los requisitos caben dentro del alcance declarado.
+- [ ] No hay dos requisitos que se contradigan entre sí.
+- [ ] Ningún requisito se puede interpretar de dos maneras distintas.
