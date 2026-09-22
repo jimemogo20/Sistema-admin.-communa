@@ -1,151 +1,150 @@
-# Guía de redacción de requisitos
+# Especificación de requisitos
 
-> **Material de consulta · Ingeniería de Software I · SIS3407**  
-> Este documento no se entrega. Es la referencia para escribir los requisitos de tu proyecto y para revisar los de tu dupla. La plantilla que sí se llena y se entrega es `especificacion-requisitos.md`.
+**Sistema:**  
+**Autor:**  
+**Versión:**  
+**Fecha de la última actualización:**  
 
 ---
 
-## 1. Cómo se nombra un requisito
+## 1. Propósito y alcance
 
-Cada requisito tiene un identificador que **nunca cambia y nunca se reutiliza**. Si un requisito se elimina, su identificador queda muerto: no se le asigna a otro.
+*Para qué existe este documento y a quién va dirigido. El alcance se retoma de la Visión del producto, no se reinventa. Si cambió, corrígelo también allá.*
 
-Esa estabilidad no es burocracia. Es lo que permite escribir "el cambio afecta a RF-007 y RNF-SEG-002" sin repetir el texto completo, y es lo que va a hacer posible el análisis de impacto de la semana 15.
+**Propósito del documento:**
 
-### Requisitos funcionales
+**Alcance del sistema:**
 
-```
-RF-###
-```
+**Fuera del alcance:**
 
-`RF-001`, `RF-002`, `RF-003`… Numeración consecutiva, sin agrupar por módulo.
+---
 
-### Requisitos no funcionales
+## 2. Usuarios y su contexto
 
-```
-RNF-<ATRIBUTO>-###
-```
+*Se enriquece con lo que salga de la entrevista de elicitación. Si algo cambió respecto a la Visión del producto, anótalo.*
 
-| Atributo de calidad | Clave | Ejemplo |
+| Usuario | Qué hace hoy sin el sistema | Qué espera del sistema |
 |---|---|---|
-| Rendimiento | REN | `RNF-REN-001` |
-| Seguridad | SEG | `RNF-SEG-001` |
-| Usabilidad | USA | `RNF-USA-001` |
-| Confiabilidad | CON | `RNF-CON-001` |
-| Mantenibilidad | MAN | `RNF-MAN-001` |
-| Escalabilidad | ESC | `RNF-ESC-001` |
+|  |  |  |
+|  |  |  |
+
+**Conflictos identificados entre usuarios:**
 
 ---
 
-## 2. Cómo se redacta un requisito funcional
+## 3. Requisitos funcionales
 
-```
-El sistema <verbo firme> <objeto> <condición o restricción>
-```
+### 3.1 Resumen
 
-**Verbos firmes:** registra, calcula, notifica, impide, genera, valida, muestra, envía, asigna.
+| ID | Nombre | Prioridad | Origen |
+|---|---|---|---|
+| RF-001 |  |  |  |
+| RF-002 |  |  |  |
+| RF-003 |  |  |  |
 
-**Evitar:** debería, podría, de preferencia, permite que el usuario pueda, tratará de.
+### 3.2 Fichas
 
-> ✓ El sistema impide agendar dos citas en el mismo horario con el mismo veterinario.
->
-> ✕ El sistema debería tratar de evitar empalmes en la agenda.
+*Una ficha por requisito, con los mismos campos siempre. Abajo va un ejemplo completo; bórralo cuando escribas los tuyos.*
 
----
+#### RF-001 · Registro de consulta
 
-## 3. Cómo se redacta un requisito no funcional
-
-```
-<Sujeto> <comportamiento esperado> <métrica o condición medible>
-```
-
-Todo requisito no funcional necesita un número, un límite o una condición comprobable. Si no lo tiene, todavía no es un requisito: es una aspiración.
-
-> ✓ El historial completo de un paciente se despliega en menos de tres segundos.
->
-> ✕ El sistema debe ser rápido al consultar el historial.
-
----
-
-## 4. Reglas que aplican a todos
-
-**Una sola idea por requisito.** Si aparece una "y" que une dos comportamientos distintos, son dos requisitos.
-
-**Describe qué debe pasar, no cómo implementarlo.** La solución técnica se decide en la Unidad 3, no aquí.
-
-**Debe poder convertirse en una prueba.** Si no hay forma de comprobar si se cumplió, reescríbelo.
-
-**Debe caber en el alcance** definido en la Visión del producto. Si no cabe, va a una lista de ideas futuras, no al documento.
-
-**Dos personas distintas deben entenderlo igual.** Si tu dupla lo interpretó de otra forma, el requisito está mal escrito. No es cuestión de quién tiene razón.
-
----
-
-## 5. Los campos de cada ficha
-
-### Requisito funcional
-
-| Campo | Qué va ahí |
+| Campo | Contenido |
 |---|---|
-| **Descripción** | El requisito redactado con la fórmula del punto 2. |
-| **Origen** | De dónde salió: entrevista y fecha, documento revisado, observación, o supuesto propio. |
-| **Prioridad** | Imprescindible, importante o deseable. |
-| **Criterio de aceptación** | Cómo se comprueba que se cumplió. Redáctalo como si fuera una prueba. |
-| **Relacionado con** | Otros requisitos con los que se conecta, depende o entra en conflicto. |
+| **Descripción** | El sistema registra la consulta de un paciente con fecha, motivo, diagnóstico y veterinario que atendió. |
+| **Origen** | Entrevista con el veterinario, 15 de septiembre. |
+| **Prioridad** | Imprescindible |
+| **Criterio de aceptación** | Al guardar una consulta con los cuatro datos, esta aparece en el historial del paciente con la fecha correcta. Si falta alguno, el sistema no guarda y señala cuál falta. |
+| **Relacionado con** | RF-004, RNF-SEG-001 |
 
-### Requisito no funcional
+#### RF-002 ·
 
-| Campo | Qué va ahí |
+| Campo | Contenido |
 |---|---|
-| **Atributo de calidad** | Cuál de los seis atributos representa. |
-| **Descripción** | El requisito redactado con la fórmula del punto 3. |
-| **Métrica** | El valor o condición que se mide, y bajo qué circunstancias. |
-| **Origen** | De dónde salió, incluyendo si se derivó del tipo de sistema. |
-| **Prioridad** | Imprescindible, importante o deseable. |
-| **Por qué importa** | Qué pasa si no se cumple. Es lo que justifica el límite elegido. |
-| **Afecta a** | Qué requisitos funcionales quedan condicionados por este. |
+| **Descripción** |  |
+| **Origen** |  |
+| **Prioridad** |  |
+| **Criterio de aceptación** |  |
+| **Relacionado con** |  |
 
 ---
 
-## 6. Sobre el campo Origen
+## 4. Requisitos no funcionales
 
-Es el campo más importante del curso y el que más se descuida.
+### 4.1 Resumen
 
-Sirve para distinguir tres cosas que se ven iguales en el documento pero no lo son:
+| ID | Atributo | Nombre | Prioridad | Origen |
+|---|---|---|---|---|
+| RNF-REN-001 | Rendimiento |  |  |  |
+| RNF-SEG-001 | Seguridad |  |  |  |
+| RNF-USA-001 | Usabilidad |  |  |  |
 
-- Lo que **el cliente confirmó** explícitamente.
-- Lo que **dedujimos** de un documento o de observar el proceso.
-- Lo que **estamos suponiendo** porque nos pareció obvio.
+### 4.2 Fichas
 
-Un requisito con origen "supuesto propio" no está mal por serlo. Está mal cuando nadie sabe que lo es, porque entonces se trata como verdad confirmada y nunca se valida.
+*Agrupadas por atributo de calidad. Abajo va un ejemplo completo; bórralo cuando escribas los tuyos.*
 
-Después de la entrevista de elicitación, revisa cuántos de tus supuestos sobrevivieron.
+#### RNF-REN-001 · Tiempo de consulta del historial
+
+| Campo | Contenido |
+|---|---|
+| **Atributo de calidad** | Rendimiento |
+| **Descripción** | El historial completo de un paciente se despliega en menos de tres segundos. |
+| **Métrica** | Tiempo entre la solicitud y el despliegue completo, medido con hasta 500 consultas registradas para ese paciente. |
+| **Origen** | Derivado del tipo de sistema: de información, con consulta frecuente durante la atención. |
+| **Prioridad** | Imprescindible |
+| **Por qué importa** | La consulta ocurre con el paciente enfrente. Si tarda, el veterinario abandona el sistema y vuelve al expediente en papel. |
+| **Afecta a** | RF-001, RF-004 |
+
+#### RNF-SEG-001 ·
+
+| Campo | Contenido |
+|---|---|
+| **Atributo de calidad** |  |
+| **Descripción** |  |
+| **Métrica** |  |
+| **Origen** |  |
+| **Prioridad** |  |
+| **Por qué importa** |  |
+| **Afecta a** |  |
 
 ---
 
-## 7. Los seis defectos más comunes
+## 5. Casos de uso
 
-| Defecto | Cómo se ve | Cómo se arregla |
-|---|---|---|
-| Adjetivo sin medida | "debe ser rápido" | Sustituir por un número |
-| Dos en uno | "seguro y fácil de usar" | Separar en dos requisitos |
-| Solución disfrazada | "debe usar una base de datos en la nube" | Escribir la necesidad, no la técnica |
-| Condicional vago | "debería, de preferencia" | Usar formulación firme |
-| Sin criterio | No se sabe cómo comprobarlo | Agregar criterio de aceptación |
-| Ambiguo | Dos lecturas posibles | Reescribir hasta que solo haya una |
+*Se trabajan en la semana 7, después de la entrevista. Cada caso de uso se relaciona con los requisitos funcionales que realiza.*
 
 ---
 
-## 8. Lista de verificación para revisar
+## 6. Trazabilidad
 
-Úsala para revisar tu propio documento y el de tu dupla.
+*Esta tabla es la que hace posible el análisis de impacto de la semana 15. Mantenla actualizada conforme cambien los requisitos.*
 
-- [ ] Todos los requisitos tienen identificador único y ninguno está repetido.
-- [ ] Cada requisito expresa una sola idea.
-- [ ] Cada requisito funcional tiene criterio de aceptación comprobable.
-- [ ] Cada requisito no funcional tiene una métrica, no solo un adjetivo.
-- [ ] El campo Origen distingue lo confirmado de lo supuesto.
-- [ ] Hay al menos un requisito no funcional por cada atributo de calidad que impone el tipo de sistema.
-- [ ] Ningún requisito impone una solución técnica.
-- [ ] Todos los requisitos caben dentro del alcance declarado.
-- [ ] No hay dos requisitos que se contradigan entre sí.
-- [ ] Ningún requisito se puede interpretar de dos maneras distintas.
+| Requisito | Origen | Caso de uso | Elemento del prototipo |
+|---|---|---|---|
+| RF-001 | Entrevista 15 sep | CU-01 Registrar consulta | Pantalla de consulta |
+|  |  |  |  |
+
+---
+
+## 7. Registro de cambios
+
+*Cada modificación posterior a la primera versión se anota aquí. Un requisito eliminado se marca como tal, pero su identificador no se reutiliza.*
+
+| Fecha | Requisito | Qué cambió | Por qué |
+|---|---|---|---|
+|  |  |  |  |
+
+---
+
+## Antes de entregar
+
+- [ ] Todos los requisitos tienen identificador único y ninguno está repetido
+- [ ] Cada requisito expresa una sola idea
+- [ ] Cada requisito funcional tiene criterio de aceptación comprobable
+- [ ] Cada requisito no funcional tiene una métrica, no solo un adjetivo
+- [ ] El campo Origen distingue lo confirmado por el cliente de lo que sigo suponiendo
+- [ ] Hay al menos un requisito no funcional por cada atributo de calidad que impone mi tipo de sistema
+- [ ] Ningún requisito impone una solución técnica
+- [ ] Todos los requisitos caben dentro del alcance declarado
+- [ ] La tabla de trazabilidad está completa
+- [ ] Mi dupla revisó el documento y su revisión está registrada
+- [ ] Borré los ejemplos y las instrucciones en cursiva
