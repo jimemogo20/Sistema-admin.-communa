@@ -1,9 +1,9 @@
 # Especificación de requisitos
 
 **Sistema:**  
-**Autor:**  
-**Versión:**  
-**Fecha de la última actualización:**  
+**Autor:**  : Jimena Morales Gómez
+**Versión:**  2026
+**Fecha de la última actualización:**  : 22/septiembre/2026
 
 ---
 
