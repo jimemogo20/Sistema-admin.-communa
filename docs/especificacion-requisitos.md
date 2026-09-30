@@ -190,12 +190,23 @@ También es necesario que el sistema mantenga un equilibrio entre facilitar las 
 
 ## 5. Casos de uso
 
-- CU-01 · Registrar reservación
-- CU-02 · Consultar horarios disponibles
-- CU-03 · Consultar paquete
-- CU-04 · Registrar paquete
+### 5.1 Actores del sistema
 
-Estos casos de uso podrán ajustarse conforme se validen las reglas que todavía están pendientes con mi cliente
+Se identificaron dos actores principales:
+
+- **Persona que utiliza el local:** consulta la disponibilidad del cuarto, realiza reservaciones y consulta los usos disponibles de su paquete
+- **Administradora:** consulta las reservaciones, registra reservaciones, registra los paquetes y revisa los usos disponibles de cada persona
+
+
+### 5.2 Lista de casos de uso
+
+| ID | Caso de uso | Actor principal |
+|---|---|---|
+| CU-01 | Registrar reservación | Persona que utiliza el local / Administradora |
+| CU-02 | Consultar disponibilidad | Persona que utiliza el local / Administradora |
+| CU-03 | Consultar reservaciones | Administradora |
+| CU-04 | Registrar paquete | Administradora |
+| CU-05 | Consultar usos disponibles | Persona que utiliza el local / Administradora |
 
 ---
 
