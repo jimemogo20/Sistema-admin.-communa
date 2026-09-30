@@ -2,7 +2,7 @@
 
 **Sistema: Consulta de citas y paquetes**
 
-**Autor:Jimena Morales Gómez**
+**Autor: Jimena Morales Gómez**
 
 **Versión: 2026**  
 
@@ -236,4 +236,46 @@ Durante el análisis también surgieron algunos puntos que todavía necesitan co
 - ¿Los paquetes siempre serán de 5 y 10 usos?
 - ¿Se puede hacer una reservación futura si el paquete ya llegó a cero usos?
 - ¿Cómo se registra la compra de un nuevo paquete después de utilizar el último uso?
+
+---
+## Resultados de la entrevista
+
+Después de realizar la entrevista, se revisaron los supuestos que se habían planteado al inicio del proyecto. Esto permitió confirmar algunas ideas, identificar aspectos que necesitaban cambios y encontrar situaciones que no se habían considerado inicialmente.
+
+### Supuestos que se confirmaron
+
+- Los paquetes que se manejan actualmente son de 5 y 10 usos.
+- No se deben tener dos reservaciones del cuarto en el mismo horario.
+- Es necesario llevar un control de los usos disponibles de cada persona.
+- La encargada necesita consultar las reservaciones para conocer la disponibilidad del cuarto.
+- Cuando una persona utiliza la última sesión de su paquete, puede terminar esa sesión normalmente, pero necesita adquirir un nuevo paquete para continuar utilizando el local posteriormente.
+- Uno de los principales problemas es que pueden existir errores en el control de los horarios y de los usos disponibles.
+
+---
+
+### Supuestos que resultaron falsos
+
+- Al inicio se consideró incluir el control de inventario dentro del sistema, pero se determinó que no forma parte del problema principal que se busca resolver
+- Se pensó que el proyecto debía abarcar diferentes procesos del negocio, pero se decidió centrarlo únicamente en las reservaciones del local y el control de paquetes
+
+---
+
+### Información que apareció y no esperábamos
+
+- Puede ocurrir que una persona llegue al último uso de su paquete sin que la encargada identifique inmediatamente que ya terminó sus sesiones
+- Además de evitar empalmes, es importante relacionar el control de las reservaciones con los usos disponibles de cada paquete
+- Surgió la necesidad de definir qué sucede cuando una persona cancela una reservación o no asistea a la cita
+- También es necesario definir qué sucede cuando una persona quiere cambiar la fecha o el horario de una reservación
+- Falta confirmar en qué momento se debe descontar un uso del paquete
+  
+---
+
+### Cambios realizados después de la entrevista
+
+- Se delimitó el sistema a las reservaciones del cuarto y al control de paquetes
+- Se dejó fuera del alcance el control de inventario y otros procesos administrativos del negocio
+- Se estableció como requisito evitar reservaciones que coincidan en el mismo horario
+- Se agregó el control de paquetes de 5 y 10 usos
+- Se agregó la consulta de los usos disponibles de cada persona
+- Las reglas relacionadas con cancelaciones, inasistencias, cambios de horario y el momento en que se descuenta un uso se mantienen pendientes hasta ser confirmadas
   
