@@ -289,4 +289,9 @@ Después de realizar la entrevista, se revisaron los supuestos que se habían pl
 - Se agregó el control de paquetes de 5 y 10 usos
 - Se agregó la consulta de los usos disponibles de cada persona
 - Las reglas relacionadas con cancelaciones, inasistencias, cambios de horario y el momento en que se descuenta un uso se mantienen pendientes hasta ser confirmadas
-  
+
+---
+
+### Diagrama de casos de uso
+
+![Diagrama de casos de uso](diagramas/diagrama-casos-de-uso.png)
