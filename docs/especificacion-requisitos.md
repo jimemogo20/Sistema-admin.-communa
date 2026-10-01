@@ -68,7 +68,8 @@ También es necesario que el sistema mantenga un equilibrio entre facilitar las 
 | RF-002 | Consultar horarios disponibles | Imprescindible | Entrevista con la encargada del negocio — 22/09/2026. |
 | RF-003 | Evitar empalmes | Imprescindible | Entrevista con la encargada del negocio — 22/09/2026. |
 | RF-004 | Registrar paquete | Imprescindible | Entrevista con la encargada del negocio — 22/09/2026. |
-| RF-005 | Consultar usos disponibles | Imprescindible | Entrevista con la encargada del negocio — 22/09/2026.|
+| RF-005 | Consultar usos disponibles | Imprescindible | Entrevista con la encargada del negocio — 22/09/2026. |
+| RF-006 | Consultar reservaciones | Imprescindible | Entrevista con la encargada del negocio — 22/09/2026. |
 
 ### 3.2 Fichas
 
@@ -130,6 +131,16 @@ También es necesario que el sistema mantenga un equilibrio entre facilitar las 
 | **Prioridad** | Imprescindible |
 | **Criterio de aceptación** | Al consultar el paquete de una persona, se muestra la cantidad de usos disponibles. Cuando llegue a cero, se indica que el paquete se encuentra agotado. |
 | **Relacionado con** | RF-004, RNF-CON-001 |
+
+#### RF-006 · Consultar reservaciones
+
+| Campo | Contenido |
+|---|---|
+| **Descripción** | El sistema muestra las reservaciones registradas del cuarto. |
+| **Origen** | Entrevista con la encargada del negocio |
+| **Prioridad** | Imprescindible |
+| **Criterio de aceptación** | Al consultar las reservaciones, el sistema muestra las reservaciones registradas con la persona, fecha y horario correspondientes. |
+| **Relacionado con** | RF-001, RF-002, RF-003 |
 
 
 ---
@@ -208,31 +219,77 @@ Se identificaron dos actores principales:
 | CU-04 | Registrar paquete | Administradora |
 | CU-05 | Consultar usos disponibles | Persona que utiliza el local / Administradora |
 
+### 5.3 Caso de uso principal
+
+#### CU-01 · Registrar reservación
+
+| Campo | Descripción |
+|---|---|
+| **Nombre** | Registrar reservación |
+| **Actor principal** | Persona que utiliza el local |
+| **Actor secundario** | Administrador |
+| **Objetivo** | Registrar una reservación del local en una fecha y horario disponibles. |
+| **Precondición** | La persona debe seleccionar una fecha y un horario para realizar la reservación. |
+| **Resultado esperado** | La reservación queda registrada y el horario deja de aparecer como disponible. |
+
+#### Escenario principal
+
+1. La persona selecciona la opción para realizar una reservación.
+2. El sistema solicita la fecha de la reservación.
+3. La persona selecciona la fecha.
+4. El sistema muestra los horarios disponibles para esa fecha.
+5. La persona selecciona uno de los horarios disponibles.
+6. El sistema muestra los datos de la reservación.
+7. La persona confirma la reservación.
+8. El sistema registra la reservación.
+9. El sistema muestra la confirmación de que la reservación fue registrada.
+
+#### Flujos alternos
+
+**A1. El horario seleccionado ya no está disponible**
+
+1. Al intentar confirmar la reservación, el sistema detecta que el horario ya tiene otra reservación.
+2. El sistema no registra la nueva reservación.
+3. El sistema informa que el horario ya no se encuentra disponible.
+4. La persona puede seleccionar otro horario disponible.
+
+**A2. La persona decide no confirmar la reservación**
+
+1. Antes de confirmar la reservación, la persona decide cancelar el proceso.
+2. El sistema no registra la reservación.
+3. El proceso termina sin realizar cambios.
+
+### Requisitos funcionales relacionados
+
+Este caso de uso realiza los siguientes requisitos funcionales:
+
+- **RF-001 · Registrar reservación:** permite registrar la reservación con la persona, fecha y horario seleccionados.
+- **RF-002 · Consultar horarios disponibles:** permite consultar los horarios disponibles antes de realizar la reservación.
+- **RF-003 · Evitar empalmes:** impide registrar una reservación si el horario ya se encuentra ocupado.
 ---
 
 ## 6. Trazabilidad
 
-*Esta tabla es la que hace posible el análisis de impacto de la semana 15. Mantenla actualizada conforme cambien los requisitos.*
-
-| Requisito | Origen | Caso de uso | Elemento del prototipo |
+| Requisito | Origen | Caso de uso | Pantallas |
 |---|---|---|---|
-| RF-001 | Entrevista 15 sep | CU-01 Registrar consulta | Pantalla de consulta |
-|  |  |  |  |
+| RF-001 · Registrar reservación | Entrevista con la encargada | CU-01 · Registrar reservación | |
+| RF-002 · Consultar horarios disponibles | Entrevista con la encargada | CU-02 · Consultar disponibilidad | |
+| RF-003 · Evitar empalmes | Entrevista con la encargada | CU-01 · Registrar reservación | |
+| RF-004 · Registrar paquete | Entrevista con la encargada | CU-04 · Registrar paquete | |
+| RF-005 · Consultar usos disponibles | Entrevista con la encargada | CU-05 · Consultar usos disponibles | |
+| RNF-CON-001 · Consistencia de usos disponibles | Derivado de la necesidad de controlar correctamente los paquetes | CU-04 / CU-05 | |
+| RNF-USA-001 · Facilidad para registrar una reservación | Derivado del atributo de usabilidad | CU-01 / CU-02 | |
+| RNF-CON-002 · Permanencia de reservaciones | Supuesto propio por validar | CU-01 / CU-02 / CU-03 | |
+| RF-006 · Consultar reservaciones | Entrevista con la encargada | CU-03 · Consultar reservaciones | |
 
 ---
 
 ## 7. Registro de cambios
 
-| Requisito | Origen | Caso de uso | Elemento del prototipo |
+| Fecha | Requisito | Qué cambió | Por qué |
 |---|---|---|---|
-| RF-001 | Entrevista con la encargada | CU-01 Registrar reservación | Pantalla de reservación |
-| RF-002 | Entrevista con la encargada | CU-02 Consultar horarios disponibles | Calendario / disponibilidad |
-| RF-003 | Entrevista con la encargada | CU-01 Registrar reservación | Pantalla de reservación |
-| RF-004 | Entrevista con la encargada | CU-04 Registrar paquete | Pantalla de paquetes |
-| RF-005 | Entrevista con la encargada | CU-03 Consultar paquete | Pantalla de paquetes |
-| RNF-CON-001 | Derivado del tipo de sistema | CU-03 Consultar paquete | Pantalla de paquetes |
-| RNF-USA-001 | Derivado del tipo de sistema | CU-01 Registrar reservación | Pantalla de reservación |
-| RNF-CON-002 | Supuesto por validar | CU-01 / CU-02 | Pantalla de reservación y disponibilidad |
+| 30/09/2026 | Documento completo | Se creó la primera versión de la especificación de requisitos. | Se documentaron los requisitos identificados a partir de la visión del producto y de la entrevista. |
+| 30/09/2026 | RF-006 | Se agregó el requisito Consultar reservaciones. | Durante la revisión de trazabilidad se identificó que CU-03 no tenía un requisito funcional relacionado. |
 
 ---
 ## Supuestos pendientes de validar
