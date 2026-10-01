@@ -212,9 +212,9 @@ Estos puntos quedan pendientes de confirmar antes de convertirlos en reglas defi
 
 # 3. Ficha de dominio
 
-### Omar Enrique Buenrostro Islas   
+# Omar Enrique Buenrostro Islas   
 
-### QUIÉN ERES
+### Quién eres
 
 Eres la encargada de un negocio donde se renta un cuarto que actualmente utilizan dos personas.
 
