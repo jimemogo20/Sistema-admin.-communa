@@ -1,12 +1,12 @@
 # Especificación de requisitos
 
-**Sistema: Consulta de citas y paquetes**
+**Sistema: Sistema de reservaciones y control de paquetes**
 
 **Autor: Jimena Morales Gómez**
 
 **Versión: 2026**  
 
-**Fecha de la última actualización: 01/septiembre/2026** 
+**Fecha de la última actualización: 01/octubre/2026** 
 
 ---
 
@@ -65,23 +65,22 @@ También es necesario que el sistema mantenga un equilibrio entre facilitar las 
 
 | ID | Nombre | Prioridad | Origen |
 |---|---|---|---|
-| RF-001 | Registrar reservación | Imprescindible | Entrevista con la encargada del negocio — 22/09/2026. |
-| RF-002 | Consultar horarios disponibles | Imprescindible | Entrevista con la encargada del negocio — 22/09/2026. |
-| RF-003 | Evitar empalmes | Imprescindible | Entrevista con la encargada del negocio — 22/09/2026. |
-| RF-004 | Registrar paquete | Imprescindible | Entrevista con la encargada del negocio — 22/09/2026. |
-| RF-005 | Consultar usos disponibles | Imprescindible | Entrevista con la encargada del negocio — 22/09/2026. |
-| RF-006 | Consultar reservaciones | Imprescindible | Entrevista con la encargada del negocio — 22/09/2026. |
+| RF-001 | Registrar reservación | Imprescindible | Entrevista  |
+| RF-002 | Consultar horarios disponibles | Imprescindible | Entrevista|
+| RF-003 | Evitar empalmes | Imprescindible | Entrevista|
+| RF-004 | Registrar paquete | Imprescindible | Entrevista|
+| RF-005 | Consultar usos disponibles | Imprescindible | |
+| RF-006 | Consultar reservaciones | Imprescindible |Entrevista|
 | RF-007 | Iniciar sesión | Importante | Supuesto propio por validar |
-### 3.2 Fichas
 
-*Una ficha por requisito, con los mismos campos siempre. Abajo va un ejemplo completo; bórralo cuando escribas los tuyos.*
+### 3.2 Fichas
 
 #### RF-001 · Registro de consulta
 
 | Campo | Contenido |
 |---|---|
 | **Descripción** | El sistema registra una reservación del cuarto con la persona, fecha y horario seleccionados. |
-| **Origen** | Entrevista con la encargada del negocio |
+| **Origen** | Entrevista|
 | **Prioridad** | Imprescindible |
 | **Criterio de aceptación** | Al ingresar una persona, una fecha y un horario disponible, la reservación queda registrada y puede consultarse posteriormente. |
 | **Relacionado con** | RF-002, RF-003 |
@@ -92,7 +91,7 @@ También es necesario que el sistema mantenga un equilibrio entre facilitar las 
 | Campo | Contenido |
 |---|---|
 | **Descripción** | El sistema muestra los horarios que se encuentran disponibles para una fecha seleccionada. |
-| **Origen** | Entrevista con la encargada del negocio |
+| **Origen** | Entrevista|
 | **Prioridad** | Imprescindible |
 | **Criterio de aceptación** | Al seleccionar una fecha, se muestran los horarios disponibles y los horarios que ya tienen una reservación no aparecen como disponibles. |
 | **Relacionado con** | RF-001, RF-003 |
@@ -104,7 +103,7 @@ También es necesario que el sistema mantenga un equilibrio entre facilitar las 
 | Campo | Contenido |
 |---|---|
 | **Descripción** | El sistema impide registrar dos reservaciones del local que coincidan en el mismo horario. |
-| **Origen** | Entrevista con la encargada del negocio. |
+| **Origen** | Entrevista|
 | **Prioridad** | Imprescindible |
 | **Criterio de aceptación** | Si ya existe una reservación para una fecha y horario, al intentar registrar otra reservación en ese mismo espacio el sistema no permite registrarla. |
 | **Relacionado con** | RF-001, RF-002 |
@@ -116,7 +115,7 @@ También es necesario que el sistema mantenga un equilibrio entre facilitar las 
 | Campo | Contenido |
 |---|---|
 | **Descripción** | El sistema registra un paquete de 5 o 10 usos y lo relaciona con la persona correspondiente. |
-| **Origen** | Entrevista con la encargada del negocio. |
+| **Origen** | Entrevista|
 | **Prioridad** | Imprescindible |
 | **Criterio de aceptación** | Al seleccionar una persona y registrar un paquete de 5 o 10 usos, el sistema guarda el paquete con la cantidad de usos correspondiente. |
 | **Relacionado con** | RF-005 |
@@ -128,7 +127,7 @@ También es necesario que el sistema mantenga un equilibrio entre facilitar las 
 | Campo | Contenido |
 |---|---|
 | **Descripción** | El sistema muestra la cantidad de usos que le quedan disponibles a una persona en su paquete. |
-| **Origen** | Entrevista con la encargada del negocio. |
+| **Origen** | Entrevista|
 | **Prioridad** | Imprescindible |
 | **Criterio de aceptación** | Al consultar el paquete de una persona, se muestra la cantidad de usos disponibles. Cuando llegue a cero, se indica que el paquete se encuentra agotado. |
 | **Relacionado con** | RF-004, RNF-CON-001 |
@@ -138,7 +137,7 @@ También es necesario que el sistema mantenga un equilibrio entre facilitar las 
 | Campo | Contenido |
 |---|---|
 | **Descripción** | El sistema muestra las reservaciones registradas del cuarto. |
-| **Origen** | Entrevista con la encargada del negocio |
+| **Origen** | Entrevista|
 | **Prioridad** | Imprescindible |
 | **Criterio de aceptación** | Al consultar las reservaciones, el sistema muestra las reservaciones registradas con la persona, fecha y horario correspondientes. |
 | **Relacionado con** | RF-001, RF-002, RF-003 |
@@ -238,7 +237,7 @@ Se identificaron dos actores principales:
 |---|---|
 | **Nombre** | Registrar reservación |
 | **Actor principal** | Persona que utiliza el local |
-| **Actor secundario** | Administrador |
+| **Precondición** | La persona ha iniciado sesión en el sistema. |
 | **Objetivo** | Registrar una reservación del local en una fecha y horario disponibles. |
 | **Precondición** | La persona debe seleccionar una fecha y un horario para realizar la reservación. |
 | **Resultado esperado** | La reservación queda registrada y el horario deja de aparecer como disponible. |
@@ -318,7 +317,7 @@ Durante el análisis también surgieron algunos puntos que todavía necesitan co
 - ¿Los paquetes siempre serán de 5 y 10 usos?
 - ¿Se puede hacer una reservación futura si el paquete ya llegó a cero usos?
 - ¿Cómo se registra la compra de un nuevo paquete después de utilizar el último uso?
--- ¿El sistema deberá requerir inicio de sesión para diferenciar el acceso de la administradora y de las personas que utilizan el local?
+- ¿El sistema deberá requerir inicio de sesión para diferenciar el acceso de la administradora y de las personas que utilizan el local?
   
 ---
 ## Resultados de la entrevista
@@ -367,6 +366,12 @@ Después de realizar la entrevista, se revisaron los supuestos que se habían pl
 ### Diagrama de casos de uso
 
 ![Diagrama de casos de uso](diagramas/casos-de-uso.drawio.png)
+
+## Prototipo
+
+El prototipo navegable del sistema se encuentra disponible en Figma:
+
+[Ver prototipo en Figma](https://www.figma.com/proto/0zxKZs61JZ9jykTtZytYTZ/Communa?node-id=10-2&p=f&t=uBB4o5MYTDqPvjwL-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=10%3A2)
 
 ### Revisión con dupla 
 
