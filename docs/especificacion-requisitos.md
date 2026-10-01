@@ -18,10 +18,11 @@ Este documento tiene como propósito definir los requisitos del sistema de reser
 
 **Alcance del sistema:**
 
-El sistema estará enfocado en el control de las reservaciones de un local compartido y en el seguimiento de los paquetes de usos de las personas que lo utilizan.
+El sistema estará enfocado en el control de las reservaciones de un local compartido y en el seguimiento de los paquetes de usos de las personas que lo utilizan. 
 
 El sistema:
 
+- Permite iniciar sesión para acceder a las funciones correspondientes a cada tipo de usuario
 - Registra reservaciones indicando la persona, fecha y horario
 - Muestra los horarios disponibles del cuarto
 - Impide registrar dos reservaciones que coincidan en el mismo horario
@@ -70,7 +71,7 @@ También es necesario que el sistema mantenga un equilibrio entre facilitar las 
 | RF-004 | Registrar paquete | Imprescindible | Entrevista con la encargada del negocio — 22/09/2026. |
 | RF-005 | Consultar usos disponibles | Imprescindible | Entrevista con la encargada del negocio — 22/09/2026. |
 | RF-006 | Consultar reservaciones | Imprescindible | Entrevista con la encargada del negocio — 22/09/2026. |
-
+| RF-007 | Iniciar sesión | Importante | Supuesto propio por validar |
 ### 3.2 Fichas
 
 *Una ficha por requisito, con los mismos campos siempre. Abajo va un ejemplo completo; bórralo cuando escribas los tuyos.*
@@ -142,6 +143,15 @@ También es necesario que el sistema mantenga un equilibrio entre facilitar las 
 | **Criterio de aceptación** | Al consultar las reservaciones, el sistema muestra las reservaciones registradas con la persona, fecha y horario correspondientes. |
 | **Relacionado con** | RF-001, RF-002, RF-003 |
 
+#### RF-007 · Iniciar sesión
+
+| Campo | Contenido |
+|---|---|
+| **Descripción** | El sistema valida las credenciales ingresadas para permitir el acceso al sistema  |
+| **Origen** | Supuesto propio por validar con la encargada  |
+| **Prioridad** | Importante |
+| **Criterio de aceptación** | Al ingresar credenciales válidas, el sistema permite el acceso y muestra la sesión correspondiente al usuario. |
+| **Relacionado con** | RF-001, RF-004, RF-005, RF-006 |
 
 ---
 
@@ -205,19 +215,20 @@ También es necesario que el sistema mantenga un equilibrio entre facilitar las 
 
 Se identificaron dos actores principales:
 
-- **Persona que utiliza el local:** consulta la disponibilidad del cuarto, realiza reservaciones y consulta los usos disponibles de su paquete
-- **Administradora:** consulta las reservaciones, registra reservaciones, registra los paquetes y revisa los usos disponibles de cada persona
+- **Administradora:** inicia sesión, consulta las reservaciones, registra los paquetes y revisa los usos disponibles de cada persona.
+- **Persona que utiliza el local:** inicia sesión, consulta la disponibilidad del cuarto, realiza reservaciones, consulta sus reservaciones y revisa los usos disponibles de su paquete.
 
 
 ### 5.2 Lista de casos de uso
 
 | ID | Caso de uso | Actor principal |
 |---|---|---|
-| CU-01 | Registrar reservación | Persona que utiliza el local / Administradora |
-| CU-02 | Consultar disponibilidad | Persona que utiliza el local / Administradora |
-| CU-03 | Consultar reservaciones | Administradora |
+| CU-01 | Registrar reservación | Persona que utiliza el local |
+| CU-02 | Consultar disponibilidad | Persona que utiliza el local |
+| CU-03 | Consultar reservaciones | Persona que utiliza el local / Administradora |
 | CU-04 | Registrar paquete | Administradora |
 | CU-05 | Consultar usos disponibles | Persona que utiliza el local / Administradora |
+| CU-06 | Iniciar sesión | Persona que utiliza el local / Administradora |
 
 ### 5.3 Caso de uso principal
 
@@ -272,15 +283,16 @@ Este caso de uso realiza los siguientes requisitos funcionales:
 
 | Requisito | Origen | Caso de uso | Pantallas |
 |---|---|---|---|
-| RF-001 · Registrar reservación | Entrevista con la encargada | CU-01 · Registrar reservación | |
-| RF-002 · Consultar horarios disponibles | Entrevista con la encargada | CU-02 · Consultar disponibilidad | |
-| RF-003 · Evitar empalmes | Entrevista con la encargada | CU-01 · Registrar reservación | |
-| RF-004 · Registrar paquete | Entrevista con la encargada | CU-04 · Registrar paquete | |
-| RF-005 · Consultar usos disponibles | Entrevista con la encargada | CU-05 · Consultar usos disponibles | |
-| RNF-CON-001 · Consistencia de usos disponibles | Derivado de la necesidad de controlar correctamente los paquetes | CU-04 / CU-05 | |
-| RNF-USA-001 · Facilidad para registrar una reservación | Derivado del atributo de usabilidad | CU-01 / CU-02 | |
-| RNF-CON-002 · Permanencia de reservaciones | Supuesto propio por validar | CU-01 / CU-02 / CU-03 | |
-| RF-006 · Consultar reservaciones | Entrevista con la encargada | CU-03 · Consultar reservaciones | |
+| RF-001 · Registrar reservación | Entrevista con la encargada | CU-01 · Registrar reservación | 02 · Seleccionar fecha / 03 · Horarios disponibles / 04 · Confirmar reservación / 05 · Reservación confirmada |
+| RF-002 · Consultar horarios disponibles | Entrevista con la encargada | CU-02 · Consultar disponibilidad | 02 · Seleccionar fecha / 03 · Horarios disponibles |
+| RF-003 · Evitar empalmes | Entrevista con la encargada | CU-01 · Registrar reservación | 03 · Horarios disponibles / 06 · Horario no disponible |
+| RF-004 · Registrar paquete | Entrevista con la encargada | CU-04 · Registrar paquete | 01A-2 · Paquetes |
+| RF-005 · Consultar usos disponibles | Entrevista con la encargada | CU-05 · Consultar usos disponibles | 01B · Mi cuenta / 01A-3 · Consultar usos disponibles |
+| RF-006 · Consultar reservaciones | Entrevista con la encargada | CU-03 · Consultar reservaciones | 01A-1 · Reservaciones / 01B · Mi cuenta |
+| RF-007 · Iniciar sesión | Supuesto propio por validar | CU-06 · Iniciar sesión | 00 · Iniciar sesión |
+| RNF-CON-001 · Consistencia de usos disponibles | Derivado de la necesidad de controlar correctamente los paquetes | CU-04 / CU-05 | 01A-2 · Paquetes / 01A-3 · Consultar usos disponibles / 01B · Mi cuenta |
+| RNF-USA-001 · Facilidad para registrar una reservación | Derivado del atributo de usabilidad | CU-01 / CU-02 | 02 / 03 / 04 / 05 |
+| RNF-CON-002 · Permanencia de reservaciones | Supuesto propio por validar | CU-01 / CU-02 / CU-03 | No representado directamente en el prototipo |
 
 ---
 
@@ -288,8 +300,10 @@ Este caso de uso realiza los siguientes requisitos funcionales:
 
 | Fecha | Requisito | Qué cambió | Por qué |
 |---|---|---|---|
-| 30/09/2026 | Documento completo | Se creó la primera versión de la especificación de requisitos. | Se documentaron los requisitos identificados a partir de la visión del producto y de la entrevista. |
-| 30/09/2026 | RF-006 | Se agregó el requisito Consultar reservaciones. | Durante la revisión de trazabilidad se identificó que CU-03 no tenía un requisito funcional relacionado. |
+| 01/10/2026 | RF-007 | Se agregó el requisito Iniciar sesión | El prototipo distingue el acceso de la administradora y de la persona que utiliza el local. Se mantiene como supuesto pendiente de validar. |
+| 01/10/2026 | CU-01 y CU-02 | Se eliminó a la administradora como actor de estos casos de uso | Se definió que únicamente la persona que utiliza el local realiza reservaciones y consulta disponibilidad para reservar |
+| 01/10/2026 | CU-03 | Se agregó a la persona que utiliza el local como actor | El prototipo permite que cada persona consulte sus propias reservaciones. |
+| 01/10/2026 | Trazabilidad | Se agregaron las pantallas del prototipo | Se terminó el flujo navegable en Figma |
 
 ---
 ## Supuestos pendientes de validar
@@ -304,7 +318,8 @@ Durante el análisis también surgieron algunos puntos que todavía necesitan co
 - ¿Los paquetes siempre serán de 5 y 10 usos?
 - ¿Se puede hacer una reservación futura si el paquete ya llegó a cero usos?
 - ¿Cómo se registra la compra de un nuevo paquete después de utilizar el último uso?
-
+-- ¿El sistema deberá requerir inicio de sesión para diferenciar el acceso de la administradora y de las personas que utilizan el local?
+  
 ---
 ## Resultados de la entrevista
 
@@ -351,4 +366,4 @@ Después de realizar la entrevista, se revisaron los supuestos que se habían pl
 
 ### Diagrama de casos de uso
 
-![Diagrama de casos de uso](diagramas/diagrama-casos-de-uso.png)
+![Diagrama de casos de uso](diagramas/casos-de-uso.drawio.png)
