@@ -1,163 +1,260 @@
 # Guion de entrevista
 
-## 1. Objetivo de la entrevista
+> **Proyecto:** Sistema de reservaciones y control de paquetes  
+> **Fecha:** 22/09/2026
 
-El objetivo de esta entrevista fue entender mejor cómo se manejan actualmente las reservaciones del cuarto y los paquetes de usos. También queríamos conocer cuáles son los problemas que tienen actualmente y confirmar algunas cosas que habíamos pensado al inicio del proyecto.
 
-Con las respuestas de la entrevista pudimos definir mejor qué necesita el sistema y qué cosas realmente vale la pena incluir.
+### Apertura
 
----
+Hola, este proyecto está enfocado en mejorar la forma en la que se organizan las reservaciones del local dentro de Communa y se lleva el control de los paquetes.
 
-## 2. Contexto
+La idea de esta entrevista es entender cómo hacen actualmente este proceso, qué problemas llegan a tener y qué cosas serían importantes mejorar.
 
-Primero hicimos algunas preguntas para conocer mejor cómo funciona actualmente la renta del cuarto.
-
-1. ¿Cómo funciona actualmente la renta del cuarto?
-2. ¿Quiénes utilizan el cuarto?
-3. ¿Quién se encarga de organizar las reservaciones?
-4. ¿Cómo pide una persona una fecha y un horario?
-5. ¿Dónde anotan o guardan las reservaciones?
-6. ¿Qué información necesitas tener de cada reservación?
+También quiero confirmar algunas ideas que tenemos para el sistema y ver si realmente son necesarias.
 
 ---
 
-## 3. Proceso actual
+### Contexto
 
-Después preguntamos cómo se hacen normalmente las reservaciones y cómo llevan el control de los paquetes.
+**C1.** Cuéntame un poco cómo funciona actualmente la renta del cuarto.
 
-1. ¿Qué pasa desde que una persona pide usar el cuarto hasta que termina su sesión?
-2. ¿Cómo revisas si un horario está disponible?
-3. ¿Cómo registras actualmente una reservación?
-4. ¿Cómo sabes cuántos usos le quedan a cada persona?
-5. ¿Qué paquetes manejan actualmente?
-6. ¿Qué pasa cuando una persona llega al último uso de su paquete?
-7. ¿Cómo sabes cuándo alguien necesita comprar otro paquete?
-8. ¿Cómo consultas las reservaciones que ya tienes?
+**C2.** ¿Quiénes utilizan actualmente el cuarto y quién se encarga de organizar sus reservaciones?
+
+**C3.** Cuando una persona quiere utilizar el cuarto, ¿cómo se pone de acuerdo contigo para elegir una fecha y un horario?
+
+**C4.** ¿Cómo llevas actualmente el control de las reservaciones y de los paquetes?
 
 ---
 
-## 4. Problemas actuales
+### Proceso actual
 
-También preguntamos sobre las cosas que actualmente causan más problemas.
+**P1.** Cuéntame qué pasa normalmente desde que una persona te pide reservar el cuarto hasta que termina su sesión.
 
-1. ¿Qué es lo que más se te complica al organizar las reservaciones?
-2. ¿Ha pasado que dos reservaciones se empalmen en el mismo horario?
-3. Si pasa un empalme, ¿qué hacen?
-4. ¿Ha pasado que alguien termine su paquete y siga usando el cuarto porque no se dieron cuenta?
-5. ¿Se te complica saber cuántos usos le quedan a cada persona?
-6. ¿Qué información te gustaría poder consultar más fácilmente?
-7. ¿Qué parte de este proceso crees que sería más importante mejorar?
+**P2.** Cuando alguien quiere reservar, ¿cómo revisas si el horario que quiere está disponible?
 
----
+**P3.** ¿Cómo registras actualmente una reservación y qué información necesitas guardar?
 
-## 5. Excepciones
+**P4.** ¿Cómo llevas el control de los paquetes y cómo sabes cuántos usos le quedan a cada persona?
 
-También pensamos en algunas situaciones que pueden pasar fuera del proceso normal.
-
-1. ¿Qué pasa si una persona quiere cambiar su fecha o su horario?
-2. ¿Qué pasa si alguien cancela una reservación?
-3. ¿Qué pasa si alguien reserva pero no asiste?
-4. ¿En qué momento se descuenta un uso del paquete?
-5. ¿Qué pasa si alguien ya no tiene usos y quiere hacer otra reservación?
-6. ¿Hay algún caso en el que una persona pueda seguir usando el cuarto aunque ya haya terminado su paquete?
-
-Estas preguntas nos ayudaron a darnos cuenta de que todavía hay algunas reglas que necesitamos confirmar, principalmente las cancelaciones, inasistencias, cambios de horario y el momento exacto en el que se descuenta un uso.
+**P5.** ¿Qué pasa cuando una persona llega al último uso de su paquete?
 
 ---
 
-## 6. Verificación de supuestos
+### Dificultades del proceso actual
 
-Antes de hacer la entrevista ya teníamos algunas ideas de cómo podía funcionar el sistema, así que hicimos preguntas para saber si realmente eran necesarias.
+**D1.** ¿Qué es lo que más se te complica al momento de organizar las reservaciones?
 
-1. ¿Los paquetes que manejan son de 5 y 10 usos?
-2. ¿Necesitas saber cuántos usos le quedan a cada persona?
-3. ¿El sistema debería evitar que dos personas reserven el cuarto en el mismo horario?
-4. ¿Necesitas poder consultar todas las reservaciones?
-5. Cuando una persona usa la última sesión de su paquete, ¿puede terminar esa sesión normalmente?
-6. Después de terminar su paquete, ¿necesita comprar otro para poder seguir usando el cuarto?
-7. ¿El inventario debería formar parte de este sistema?
-8. ¿Lo más importante sería enfocarnos en las reservaciones y en los paquetes?
+**D2.** ¿Alguna vez ha pasado que dos reservaciones se empalmen? Cuéntame qué pasó y cómo lo resolvieron.
 
----
+**D3.** ¿Te ha pasado que una persona termine los usos de su paquete y no te des cuenta inmediatamente?
 
-# Bitácora de la entrevista
+**D4.** ¿Qué es lo más complicado de llevar el control de los usos que le quedan a cada persona?
 
-**Persona entrevistada:** Omar Enrique Buenrostro Islas  
-**Fecha:** 22/09/2026  
-**Tema:** Reservaciones del cuarto y paquetes
-
-## Supuestos que se confirmaron
-
-Después de la entrevista confirmamos varias cosas que ya habíamos considerado:
-
-- Los paquetes son de 5 y 10 usos.
-- Es importante saber cuántos usos le quedan a cada persona.
-- No debería haber dos reservaciones en el mismo horario.
-- La encargada necesita poder consultar las reservaciones.
-- Cuando una persona llega al último uso de su paquete puede terminar esa sesión.
-- Después necesita comprar otro paquete si quiere seguir utilizando el cuarto.
-- El sistema se debe enfocar principalmente en las reservaciones y en los paquetes.
-
-## Cosas que cambiaron
-
-Al principio habíamos pensado en incluir otros problemas del negocio, como el inventario y otros procesos administrativos.
-
-Después de revisar mejor el problema decidimos hacerlo más específico y enfocarnos solamente en:
-
-- Las reservaciones del cuarto.
-- Los paquetes de 5 y 10 usos.
-
-De esta forma el proyecto no se hace demasiado grande y se enfoca en los problemas principales que queremos resolver.
-
-## Cosas que no esperábamos
-
-Una de las cosas que vimos es que una persona puede llegar al último uso de su paquete y no darse cuenta inmediatamente de que ya se terminó.
-
-También vimos que no solamente tenemos que evitar que se empalmen las reservaciones, es importante saber cuántos usos le quedan a cada persona para tener un mejor control.
-
-Además, todavía quedaron algunas cosas por definir, como qué pasa con las cancelaciones, las personas que no asisten, los cambios de horario y en qué momento se descuenta un uso.
-
-## Cambios después de la entrevista
-
-Después de la entrevista hicimos algunos cambios al proyecto:
-
-- Nos enfocamos solamente en las reservaciones y los paquetes.
-- Dejamos fuera el inventario y otros procesos del negocio.
-- Agregamos que el sistema debe evitar reservaciones en el mismo horario.
-- Incluimos paquetes de 5 y 10 usos.
-- Agregamos la opción de consultar los usos disponibles.
-- Agregamos la consulta de las reservaciones.
-
-Las reglas sobre cancelaciones, inasistencias, cambios de horario y cuándo se descuenta un uso todavía quedan pendientes por confirmar.
+**D5.** Si pudieras mejorar una parte de este proceso, ¿cuál sería?
 
 ---
 
-# Ficha de dominio
+### Excepciones y situaciones especiales
 
-## Quién eres
+**E1.** ¿Qué hacen cuando una persona necesita cambiar la fecha o el horario de una reservación?
 
-Eres la encargada del negocio y eres quien conoce cómo se organizan las reservaciones del cuarto y los paquetes de las personas que lo utilizan.
+**E2.** ¿Qué pasa cuando una persona cancela una reservación?
 
-## Cómo es tu día
+**E3.** ¿Qué hacen si una persona tiene una reservación pero no asiste?
 
-Durante el día necesitas saber quién va a utilizar el cuarto y en qué horario, también necesitas llevar un control de los usos que le quedan a cada persona a quien le rentas, ya que en vez de cobrar por mes, cobras por uso del local en paquetes.
+**E4.** Si una persona ya utilizó todos los usos de su paquete, ¿qué pasa la siguiente vez que quiere utilizar el cuarto?
 
-Actualmente hay dos personas que utilizan el cuarto y existen paquetes de 5 y 10 usos.
+**E5.** ¿En qué momento consideran que un uso del paquete ya fue utilizado?
 
-## Reglas que conoces
+---
 
-- No debe haber dos reservaciones en el mismo horario.
-- Los paquetes pueden ser de 5 o 10 usos.
-- Se necesita saber cuántos usos le quedan a cada persona.
-- Si una persona está usando su último uso, puede terminar esa sesión normalmente.
-- Después debe comprar otro paquete para poder seguir utilizando el cuarto.
+### Verificación de supuestos
 
-## Una excepción
+Estas preguntas se hicieron para revisar algunas de las ideas que teníamos antes de definir los requisitos del sistema y comprobar cuáles realmente eran necesarias.
 
-Todavía hay algunas situaciones que necesitamos definir mejor, por ejemplo qué pasa cuando alguien cancela, no asiste o quiere cambiar su horario.
+#### Requisitos funcionales
 
-## Lo que te molesta
+**Validación 1. Reservaciones**
 
-Uno de los principales problemas es que se pueden llegar a empalmar las reservaciones.
+**Supuesto:** Es necesario tener un registro de las reservaciones del cuarto.
 
-También puede pasar que alguien termine todos los usos de su paquete y no se detecte inmediatamente, lo que hace más difícil llevar el control.
+**Pregunta:** ¿Qué información necesitas consultar de una reservación para poder organizar el uso del cuarto?
+
+---
+
+**Validación 2. Horarios disponibles**
+
+**Supuesto:** La persona necesita conocer qué horarios están disponibles antes de hacer una reservación.
+
+**Pregunta:** ¿Cómo sabes actualmente qué horarios están libres y cuáles ya están ocupados?
+
+---
+
+**Validación 3. Empalmes de reservaciones**
+
+**Supuesto:** El sistema debe evitar que dos personas reserven el cuarto en la misma fecha y horario.
+
+**Pregunta:** ¿Qué pasa actualmente cuando dos personas quieren utilizar el cuarto en el mismo horario?
+
+---
+
+**Validación 4. Paquetes**
+
+**Supuesto:** Se manejan paquetes de 5 y 10 usos.
+
+**Pregunta:** ¿Qué tipos de paquetes manejan actualmente y cómo llevas el registro de estos?
+
+---
+
+**Validación 5. Usos disponibles**
+
+**Supuesto:** Es necesario saber cuántos usos le quedan a cada persona.
+
+**Pregunta:** ¿Cómo sabes actualmente cuántos usos le quedan a una persona y qué pasa cuando llega al último?
+
+---
+
+**Validación 6. Consulta de reservaciones**
+
+**Supuesto:** La encargada necesita consultar las reservaciones que ya se encuentran registradas.
+
+**Pregunta:** Cuando necesitas revisar quién utilizará el cuarto, ¿qué información buscas y cómo la consultas actualmente?
+
+---
+
+#### Requisitos no funcionales
+
+**Validación 7. Consistencia de los usos**
+
+**Supuesto:** La cantidad de usos que muestra el sistema debe coincidir con los usos reales que tiene disponibles la persona.
+
+**Pregunta:** ¿Qué problemas podría causar que el número de usos registrados no coincida con los usos que realmente le quedan a una persona?
+
+---
+
+**Validación 8. Facilidad de uso**
+
+**Supuesto:** Registrar una reservación debe ser un proceso sencillo y no debería necesitar capacitación previa.
+
+**Pregunta:** ¿Qué parte del proceso actual te parece más tardada o complicada y cómo te gustaría que fuera?
+
+---
+
+**Validación 9. Permanencia de las reservaciones**
+
+**Supuesto:** Las reservaciones registradas deben seguir disponibles para consultarlas después.
+
+**Pregunta:** Este punto no se preguntó directamente durante la entrevista, por lo que queda pendiente de confirmar.
+
+---
+
+### Cierre
+
+Para terminar, repasamos los puntos principales sobre cómo se hacen actualmente las reservaciones, cómo funcionan los paquetes y cuáles son los problemas que se presentan.
+
+También quedaron algunas situaciones que todavía necesitamos definir mejor.
+
+¿Hay algo importante sobre las reservaciones o los paquetes que no hayamos mencionado?
+
+Gracias por tu tiempo y por ayudarme a entender mejor cómo funciona actualmente este proceso.
+
+---
+
+# 2. Bitácora de la entrevista
+
+## Supuestos confirmados
+
+- **Paquetes:** Se confirmó que se manejan paquetes de 5 y 10 usos.
+
+- **Control de usos:** Es importante saber cuántos usos le quedan disponibles a cada persona.
+
+- **Empalmes:** Se confirmó que uno de los problemas es que las reservaciones pueden llegar a empalmarse.
+
+- **Consulta de reservaciones:** La encargada necesita saber qué reservaciones están registradas para poder organizar los horarios del cuarto.
+
+- **Último uso del paquete:** Cuando una persona está utilizando su último uso puede terminar esa sesión normalmente. Para continuar utilizando el cuarto después necesita comprar otro paquete.
+
+---
+
+## Supuestos que resultaron falsos o se modificaron
+
+- **Alcance del sistema:** Al principio se habían considerado otros problemas del negocio, como inventario y otros procesos administrativos. Después se decidió que el sistema no necesita cubrir todo el negocio y que el proyecto se enfocará solamente en las reservaciones del cuarto y el control de paquetes.
+
+Esto ayudó a hacer el alcance más específico y evitar agregar funciones que no están relacionadas directamente con el problema principal.
+
+---
+
+## Hallazgos inesperados
+
+- **Fin del paquete:** Se identificó que una persona puede llegar al último uso de su paquete sin que se detecte inmediatamente que necesita comprar uno nuevo.
+
+- **Relación entre reservaciones y paquetes:** No solamente es importante organizar los horarios. También es necesario tener claro cuántos usos le quedan a cada persona.
+
+- **Situaciones especiales:** Durante el análisis aparecieron casos como cancelaciones, inasistencias y cambios de horario que necesitan reglas más claras antes de incluirlos como requisitos definitivos.
+
+---
+
+## Supuestos que no se verificaron en la entrevista
+
+- **Cancelaciones:** No se confirmó qué debe pasar con el uso del paquete cuando una persona cancela una reservación.
+
+- **Inasistencias:** No se preguntó qué debe pasar cuando una persona reserva pero no asiste.
+
+- **Cambio de horario:** No quedó definida la regla que se debe seguir cuando una persona quiere cambiar una reservación.
+
+- **Momento en que se descuenta un uso:** No se confirmó si el uso debe descontarse al reservar, al llegar o al terminar la sesión.
+
+- **Permanencia de las reservaciones:** No se preguntó directamente si las reservaciones deben permanecer disponibles después de salir y volver a entrar al sistema.
+
+Estos puntos quedan pendientes de confirmar antes de convertirlos en reglas definitivas del sistema.
+
+---
+
+# 3. Ficha de dominio
+
+### Omar Enrique Buenrostro Islas   
+
+### QUIÉN ERES
+
+Eres la encargada de un negocio donde se renta un cuarto que actualmente utilizan dos personas.
+
+Tú te encargas de organizar las reservaciones y también de llevar el control de los paquetes que compra cada persona a quien le rentas en local.
+
+---
+
+### Cómo es tu día
+
+Durante el día necesitas saber quién va a utilizar el local, en qué fecha y en qué horario.
+
+También necesitas llevar el control de los usos que le quedan a cada persona para saber cuándo termina su paquete.
+
+Actualmente se manejan paquetes de 5 y 10 usos.
+
+---
+
+### Reglas que conocemos
+- Los paquetes son de 5 o 10 usos.
+- No deberían existir dos reservaciones para el cuarto en el mismo horario.
+- Necesitas saber cuántos usos le quedan a cada persona.
+- Cuando una persona utiliza el último uso de su paquete puede terminar esa sesión normalmente.
+- Para seguir utilizando el cuarto después debe comprar otro paquete.
+- Necesitas consultar las reservaciones para saber qué horarios ya están ocupados.
+
+---
+
+### Excepción que ocurre
+
+Puede pasar que una persona termine los usos de su paquete y no se detecte inmediatamente.
+
+También pueden presentarse cambios de horario, cancelaciones o personas que no asisten a una reservación. Algunas de estas situaciones todavía no tienen una regla completamente definida.
+
+---
+
+### Lo que molesta
+
+Uno de los principales problemas es que las reservaciones pueden llegar a empalmarse.
+
+También es complicado llevar el control de cuántos usos le quedan a cada persona, ya que puede pasar que alguien llegue al final de su paquete y no se detecte inmediatamente.
+
+Lo que buscas es tener una forma más clara de consultar las reservaciones y los usos disponibles.
+
