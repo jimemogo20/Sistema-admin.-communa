@@ -6,7 +6,7 @@
 
 **Versión: 2026**  
 
-**Fecha de la última actualización: 30/septiembre/2026** 
+**Fecha de la última actualización: 01/septiembre/2026** 
 
 ---
 
@@ -367,3 +367,9 @@ Después de realizar la entrevista, se revisaron los supuestos que se habían pl
 ### Diagrama de casos de uso
 
 ![Diagrama de casos de uso](diagramas/casos-de-uso.drawio.png)
+
+### Revisión con dupla 
+
+### Cesar Alejandro Méndez Yepez
+
+
