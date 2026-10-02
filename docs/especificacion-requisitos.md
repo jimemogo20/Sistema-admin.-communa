@@ -75,14 +75,14 @@ También es necesario que el sistema mantenga un equilibrio entre facilitar las 
 
 ### 3.2 Fichas
 
-#### RF-001 · Registro de consulta
+#### RF-001 · Registrar reservación
 
 | Campo | Contenido |
 |---|---|
 | **Descripción** | El sistema registra una reservación del cuarto con la persona, fecha y horario seleccionados. |
-| **Origen** | Entrevista|
+| **Origen** |Confirmado en entrevista|
 | **Prioridad** | Imprescindible |
-| **Criterio de aceptación** | Al ingresar una persona, una fecha y un horario disponible, la reservación queda registrada y puede consultarse posteriormente. |
+| **Criterio de aceptación** | Al seleccionar una fecha y un horario disponible, la reservación queda registrada para la persona que tiene la sesión activa y puede consultarse posteriormente |
 | **Relacionado con** | RF-002, RF-003 |
 
 
@@ -91,7 +91,7 @@ También es necesario que el sistema mantenga un equilibrio entre facilitar las 
 | Campo | Contenido |
 |---|---|
 | **Descripción** | El sistema muestra los horarios que se encuentran disponibles para una fecha seleccionada. |
-| **Origen** | Entrevista|
+| **Origen** | Confirmado en entrevista|
 | **Prioridad** | Imprescindible |
 | **Criterio de aceptación** | Al seleccionar una fecha, se muestran los horarios disponibles y los horarios que ya tienen una reservación no aparecen como disponibles. |
 | **Relacionado con** | RF-001, RF-003 |
@@ -103,7 +103,7 @@ También es necesario que el sistema mantenga un equilibrio entre facilitar las 
 | Campo | Contenido |
 |---|---|
 | **Descripción** | El sistema impide registrar dos reservaciones del local que coincidan en el mismo horario. |
-| **Origen** | Entrevista|
+| **Origen** | Confirmado en entrevista|
 | **Prioridad** | Imprescindible |
 | **Criterio de aceptación** | Si ya existe una reservación para una fecha y horario, al intentar registrar otra reservación en ese mismo espacio el sistema no permite registrarla. |
 | **Relacionado con** | RF-001, RF-002 |
@@ -115,7 +115,7 @@ También es necesario que el sistema mantenga un equilibrio entre facilitar las 
 | Campo | Contenido |
 |---|---|
 | **Descripción** | El sistema registra un paquete de 5 o 10 usos y lo relaciona con la persona correspondiente. |
-| **Origen** | Entrevista|
+| **Origen** | Confirmado en entrevista|
 | **Prioridad** | Imprescindible |
 | **Criterio de aceptación** | Al seleccionar una persona y registrar un paquete de 5 o 10 usos, el sistema guarda el paquete con la cantidad de usos correspondiente. |
 | **Relacionado con** | RF-005 |
@@ -127,7 +127,7 @@ También es necesario que el sistema mantenga un equilibrio entre facilitar las 
 | Campo | Contenido |
 |---|---|
 | **Descripción** | El sistema muestra la cantidad de usos que le quedan disponibles a una persona en su paquete. |
-| **Origen** | Entrevista|
+| **Origen** | Confirmado en entrevista|
 | **Prioridad** | Imprescindible |
 | **Criterio de aceptación** | Al consultar el paquete de una persona, se muestra la cantidad de usos disponibles. Cuando llegue a cero, se indica que el paquete se encuentra agotado. |
 | **Relacionado con** | RF-004, RNF-CON-001 |
@@ -137,7 +137,7 @@ También es necesario que el sistema mantenga un equilibrio entre facilitar las 
 | Campo | Contenido |
 |---|---|
 | **Descripción** | El sistema muestra las reservaciones registradas del cuarto. |
-| **Origen** | Entrevista|
+| **Origen** | Confirmado en entrevista|
 | **Prioridad** | Imprescindible |
 | **Criterio de aceptación** | Al consultar las reservaciones, el sistema muestra las reservaciones registradas con la persona, fecha y horario correspondientes. |
 | **Relacionado con** | RF-001, RF-002, RF-003 |
@@ -237,10 +237,9 @@ Se identificaron dos actores principales:
 |---|---|
 | **Nombre** | Registrar reservación |
 | **Actor principal** | Persona que utiliza el local |
-| **Precondición** | La persona ha iniciado sesión en el sistema. |
 | **Objetivo** | Registrar una reservación del local en una fecha y horario disponibles. |
-| **Precondición** | La persona debe seleccionar una fecha y un horario para realizar la reservación. |
-| **Resultado esperado** | La reservación queda registrada y el horario deja de aparecer como disponible. |
+| **Precondición** | La persona ha iniciado sesión en el sistema. |
+| **Postcondición** | La reservación queda registrada y el horario deja de aparecer como disponible. |
 
 #### Escenario principal
 
@@ -365,7 +364,7 @@ Después de realizar la entrevista, se revisaron los supuestos que se habían pl
 
 ### Diagrama de casos de uso
 
-![Diagrama de casos de uso](diagramas/casos-de-uso.drawio.png)
+![Diagrama de casos de uso](diagramas/casos-de-uso.png)
 
 ## Prototipo
 
@@ -376,5 +375,33 @@ El prototipo navegable del sistema se encuentra disponible en Figma:
 ### Revisión con dupla 
 
 ### Cesar Alejandro Méndez Yepez
+01/oct/2026
 
+Durante la revisión se encontraron algunas inconsistencias y puntos que necesitaban mayor claridad.
+
+### Observaciones realizadas
+
+- Se encontró una inconsistencia en el nombre de RF-001.
+- Se recomendó mejorar el criterio de aceptación de RF-001 para considerar a la persona que inició sesión.
+- Se recomendó especificar mejor el origen de los requisitos confirmados en entrevista.
+- Se identificó la necesidad de justificar las métricas de los requisitos no funcionales.
+- Se recomendó hacer más medible el requisito de usabilidad.
+- Se detectó una precondición incorrecta en CU-01.
+- Se identificó que todavía no está definida la regla para descontar un uso del paquete.
+- Se señaló que falta definir qué sucede cuando una persona intenta reservar sin usos disponibles.
+- Se recomendó agregar el estado de los requisitos en la tabla de trazabilidad.
+
+### Cambios realizados después de la revisión
+
+- Se unificó RF-001 con el nombre “Registrar reservación”.
+- Se ajustó su criterio de aceptación considerando al usuario de la sesión activa.
+- Se especificó el origen de los requisitos confirmados durante la entrevista.
+- Se agregaron justificaciones a las métricas de los requisitos no funcionales.
+- Se ajustó la métrica de usabilidad para que pueda evaluarse de forma objetiva.
+- Se corrigió la precondición de CU-01.
+- Se agregó el estado de los requisitos a la tabla de trazabilidad.
+
+### Pendientes de validar
+
+No se agregó todavía un requisito para descontar automáticamente un uso ni una regla que impida reservar con cero usos, porque durante la entrevista no se confirmó en qué momento se descuenta un uso ni qué debe suceder en ese caso. Estos puntos permanecen como supuestos pendientes de validación.
 
