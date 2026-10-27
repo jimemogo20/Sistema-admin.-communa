@@ -1,1 +1,72 @@
 
+# Diagramas de arquitectura - Ejemplo de clínica veterinaria
+
+## Nivel 1. Diagrama de contexto
+
+```mermaid
+flowchart TD
+    rec([Recepcionista])
+    vet([Veterinario])
+    sis[Sistema de la clínica]
+    lab[Laboratorio externo]
+    pago[Pasarela de pagos]
+
+    rec -->|agenda y cobra| sis
+    vet -->|consulta expedientes| sis
+    sis -->|envía estudios| lab
+    sis -->|cobra consultas| pago
+
+    style sis fill:#ff5d00,color:#fff
+```
+
+## Nivel 2. Diagrama de contenedores
+
+```mermaid
+flowchart TD
+    rec([Recepcionista])
+
+    subgraph sistema[Sistema de la clínica]
+        web["App web - React"]
+        api["API - Node.js"]
+        db[("Base de datos - PostgreSQL")]
+    end
+
+    lab[Laboratorio externo]
+
+    rec -->|usa| web
+    web -->|HTTPS/JSON| api
+    api -->|lee y escribe| db
+    api -->|SFTP| lab
+
+    style api fill:#ff5d00,color:#fff
+```
+
+## Nivel 3. Diagrama de componentes
+
+```mermaid
+flowchart TD
+    web[App web]
+
+    subgraph api[API del sistema]
+        agenda["Agenda - citas y horarios"]
+        cobros["Cobros - cuentas y pagos"]
+        exp["Expedientes - historial clínico"]
+        notif["Notificador - interfaz de envío"]
+    end
+
+    db[(Base de datos)]
+    correo[Servicio de correo]
+
+    web --> agenda
+    web --> cobros
+    web --> exp
+    cobros -->|pregunta qué se atendió| agenda
+    cobros -->|enviarRecibo| notif
+    notif --> correo
+    agenda --> db
+    cobros --> db
+    exp --> db
+
+    style cobros fill:#ff5d00,color:#fff
+```
+
