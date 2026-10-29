@@ -12,11 +12,11 @@ Communna es una propuesta de sistema web para administrar las reservaciones de u
 
 ### Descripción
 
-Presenta a Communna como un sistema único y a las personas que interactúan con él: la persona que renta la sala, la recepcionista y el administrador. La persona que renta consulta disponibilidad y solicita reservaciones; la recepcionista gestiona las reservaciones y paquetes; el administrador consulta la información general.
+Presenta a Communna como un sistema único y a las personas que interactúan con él: la persona que renta el local, la recepcionista y el administrador. La persona que renta consulta disponibilidad y solicita reservaciones; la recepcionista gestiona las reservaciones y paquetes; el administrador consulta la información general.
 
 ```mermaid
 flowchart TD
-    persona([Persona que renta la sala])
+    persona([Persona que renta el local])
     recep([Recepcionista])
     admin([Administrador])
     sistema[Communna - Sistema de reservaciones y paquetes]
@@ -42,7 +42,7 @@ Propone separar el sistema en una aplicación web, una API y una base de datos. 
 
 ```mermaid
 flowchart TD
-    persona([Persona que renta la sala])
+    persona([Persona que renta el local])
     recep([Recepcionista])
     admin([Administrador])
 
@@ -225,7 +225,7 @@ classDiagram
 
 ### Explicación
 
-Una persona puede tener varias reservaciones y paquetes. Cada reservación corresponde a una sala. La relación opcional con el paquete representa una propuesta de diseño que debe validarse según cómo se registren y descuenten los usos.
+Una persona puede tener varias reservaciones y paquetes, cada reservación corresponde a una sala. La relación opcional con el paquete representa una propuesta de diseño que debe validarse según cómo se registren y descuenten los usos.
 
 ---
 
@@ -233,7 +233,7 @@ Una persona puede tener varias reservaciones y paquetes. Cada reservación corre
 
 ### Descripción
 
-Representa los estados propuestos para una reservación. Se limita al registro y la atención; no se establecen reglas de cancelación porque todavía no están confirmadas.
+Representa los estados propuestos para una reservación, se limita al registro y la atención; no se establecen reglas de cancelación porque todavía no están confirmadas.
 
 ```mermaid
 stateDiagram-v2
@@ -293,7 +293,7 @@ erDiagram
 
 ### Explicación
 
-Un usuario puede registrar varias reservaciones y tener varios paquetes. Una sala puede tener varias reservaciones en horarios distintos. La asociación entre reservación y paquete es opcional y está sujeta a confirmación.
+Un usuario puede registrar varias reservaciones y tener varios paquetes, una sala puede tener varias reservaciones en horarios distintos. La asociación entre reservación y paquete es opcional y está sujeta a confirmación.
 
 ---
 
