@@ -189,44 +189,82 @@ El sistema consulta los horarios existentes antes de guardar una nueva reservaci
 
 Propone las clases principales para representar a las personas usuarias, las reservaciones, la sala y los paquetes. Sus atributos y operaciones son orientativos.
 
-```mermaid
+
 classDiagram
+    direction LR
+
     class Usuario {
-        +int id
-        +string nombre
-        +string rol
+        -int idUsuario
+        -string nombre
+        -string rol
+        +consultarReservaciones() List~Reservacion~
+        +consultarPaquetes() List~Paquete~
     }
 
     class Sala {
-        +int id
-        +string nombre
+        -int idSala
+        -string nombre
+        +consultarDisponibilidad(fecha: Date, inicio: string, fin: string) bool
     }
 
     class Reservacion {
-        +int id
-        +date fecha
-        +string horaInicio
-        +string horaFin
-        +string estado
+        -int idReservacion
+        -Date fecha
+        -string horaInicio
+        -string horaFin
+        -EstadoReservacion estado
+        +registrar() bool
+        +marcarAtendida() void
+        +consultarEstado() EstadoReservacion
     }
 
     class Paquete {
-        +int id
-        +int usosTotales
-        +int usosDisponibles
+        -int idPaquete
+        -int usosTotales
+        -int usosDisponibles
         +consultarUsos() int
+        +descontarUso() bool
+    }
+
+    class UsoPaquete {
+        -int idUso
+        -Date fechaUso
+        +registrarUso() bool
+    }
+
+    class GestorReservaciones {
+        +verificarEmpalme(fecha: Date, inicio: string, fin: string) bool
+        +registrarReservacion(usuario: Usuario, sala: Sala, fecha: Date, inicio: string, fin: string) bool
+    }
+
+    class EstadoReservacion {
+        <<enumeration>>
+        PENDIENTE
+        CONFIRMADA
+        ATENDIDA
+        CANCELADA
     }
 
     Usuario "1" --> "0..*" Reservacion : realiza
     Sala "1" --> "0..*" Reservacion : recibe
     Usuario "1" --> "0..*" Paquete : tiene
-    Paquete "0..1" --> "0..*" Reservacion : puede asociarse
-```
+    Paquete "1" --> "0..*" UsoPaquete : registra
+    Reservacion "1" --> "0..1" UsoPaquete : genera
+    GestorReservaciones "1" --> "0..*" Reservacion : administra
+
+    note for UsoPaquete "Se registra despues de utilizar la sala"
 
 ### Explicación
 
-Una persona puede tener varias reservaciones y paquetes, cada reservación corresponde a una sala. La relación opcional con el paquete representa una propuesta de diseño que debe validarse según cómo se registren y descuenten los usos.
+### Explicación
 
+El diagrama representa las clases principales de Communna: Usuario, Sala, Reservacion, Paquete, UsoPaquete y GestorReservaciones.
+
+GestorReservaciones se encarga de verificar que no existan empalmes antes de registrar una reservación.
+
+La clase Paquete permite consultar los usos disponibles y descontar un uso cuando corresponde. La clase UsoPaquete registra cada utilización de la sala.
+
+Una decisión importante es que los usos no se descuentan al realizar una reservación, sino después de que la sala haya sido utilizada. Esto permite conservar un registro de las reservaciones y controlar correctamente los paquetes.
 ---
 
 ## 7. Diagrama de estados
