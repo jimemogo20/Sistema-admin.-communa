@@ -12,25 +12,23 @@ Communna es una propuesta de sistema web para administrar las reservaciones de u
 
 ### Descripción
 
-Presenta a Communna como un sistema único y a las personas que interactúan con él: la persona que renta el local, la recepcionista y el administrador. La persona que renta consulta disponibilidad y solicita reservaciones; la recepcionista gestiona las reservaciones y paquetes; el administrador consulta la información general.
+Presenta a Communna como un sistema único y a las dos personas que interactúan con él, las mismas que aparecen como actores en los casos de uso: la persona que renta el local y la administradora. La persona que renta consulta disponibilidad, reserva y revisa sus usos; la administradora registra paquetes y consulta reservaciones y usos.
 
 ```mermaid
 flowchart TD
     persona([Persona que renta el local])
-    recep([Recepcionista])
-    admin([Administrador])
+    admin([Administradora])
     sistema[Communna - Sistema de reservaciones y paquetes]
 
-    persona -->|consulta horarios y solicita reservaciones| sistema
-    recep -->|registra reservaciones y paquetes| sistema
-    admin -->|consulta reservaciones y usos| sistema
+    persona -->|consulta horarios, reserva y revisa sus usos| sistema
+    admin -->|registra paquetes y consulta reservaciones y usos| sistema
 
     style sistema fill:#ff5d00,color:#fff
 ```
 
 ### Explicación
 
-El diagrama identifica a los usuarios principales y las funciones que realizan, sin entrar en detalles tecnológicos. No se agregan servicios externos porque no forman parte del alcance confirmado.
+El diagrama identifica a los usuarios principales y las funciones que realizan, sin entrar en detalles tecnológicos. Communna no se comunica con ningún sistema externo: los pagos, el correo y las notificaciones por WhatsApp quedaron fuera del alcance a propósito, y los avisos de paquete agotado (SC-001) se muestran dentro del propio sistema.
 
 ---
 
@@ -38,25 +36,23 @@ El diagrama identifica a los usuarios principales y las funciones que realizan, 
 
 ### Descripción
 
-Propone separar el sistema en una aplicación web, una API y una base de datos. La tecnología específica aún no está definida.
+Propone separar el sistema en una aplicación web, una API y una base de datos, cada una con su tecnología.
 
 ```mermaid
 flowchart TD
     persona([Persona que renta el local])
-    recep([Recepcionista])
-    admin([Administrador])
+    admin([Administradora])
 
     subgraph communna[Communna]
-        web[Aplicacion web - interfaz de usuarios]
-        api[API - reglas de reservaciones y paquetes]
-        bd[(Base de datos - usuarios, reservaciones y paquetes)]
+        web["Aplicacion web<br/>[React]<br/>interfaz de usuarios"]
+        api["API - monolito modular<br/>[Node.js + Express]<br/>reglas de reservaciones y paquetes"]
+        bd[("Base de datos<br/>[PostgreSQL]<br/>usuarios, reservaciones y paquetes")]
     end
 
-    persona -->|usa| web
-    recep -->|usa| web
-    admin -->|usa| web
-    web -->|solicitudes HTTPS| api
-    api -->|consulta y guarda datos| bd
+    persona -->|usa desde el navegador| web
+    admin -->|usa desde el navegador| web
+    web -->|"solicitudes HTTPS / JSON"| api
+    api -->|"lee y escribe (SQL)"| bd
 
     style api fill:#ff5d00,color:#fff
 ```
@@ -64,6 +60,8 @@ flowchart TD
 ### Explicación
 
 La aplicación web permite a los usuarios interactuar con Communna. La API procesa las solicitudes y verifica las reglas de negocio; la base de datos conserva la información. Es una arquitectura propuesta, no una implementación existente.
+
+**Por qué estas tecnologías:** React y Node.js usan el mismo lenguaje (JavaScript) en la interfaz y en la API, lo que reduce lo que tiene que dominar un equipo pequeño. PostgreSQL es una base de datos relacional con transacciones, lo que ayuda a cumplir RF-003 (evitar empalmes) y RNF-CON-001 (usos disponibles siempre correctos), porque las reservaciones, los paquetes y los usos están relacionados entre sí.
 
 ---
 
@@ -256,10 +254,8 @@ classDiagram
 
     class EstadoReservacion {
         <<enumeration>>
-        PENDIENTE
-        CONFIRMADA
+        REGISTRADA
         ATENDIDA
-        CANCELADA
     }
 
     Usuario "1" --> "0..*" Reservacion : realiza
@@ -281,6 +277,10 @@ GestorReservaciones se encarga de verificar que no existan empalmes antes de reg
 La clase Paquete permite consultar los usos disponibles y descontar un uso cuando corresponde. La clase UsoPaquete registra cada utilización de la sala.
 
 Una decisión importante es que los usos no se descuentan al realizar una reservación, sino después de que la sala haya sido utilizada. Esto permite conservar un registro de las reservaciones y controlar correctamente los paquetes.
+
+La enumeración `EstadoReservacion` contiene solo los estados REGISTRADA y ATENDIDA, igual que el diagrama de estados. No se incluyen estados de cancelación ni de inasistencia porque esas reglas siguen pendientes de validar con la encargada.
+
+**Patrón Controlador (GRASP):** `GestorReservaciones` recibe la solicitud desde la aplicación web y coordina las validaciones (verificar empalmes y consultar disponibilidad) antes de pedirle a `Reservacion` que se registre. Así la interfaz no contiene reglas de negocio y las validaciones quedan en un solo lugar. Esta clase se agregó al hacer el diagrama de secuencia: sin ella, no había una clase responsable de verificar empalmes entre varias reservaciones.
 
 ---
 
