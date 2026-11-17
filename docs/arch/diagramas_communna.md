@@ -146,40 +146,56 @@ Si faltan datos o el horario está ocupado, se solicita una corrección. Si la f
 
 ---
 
+
 ## 5. Diagrama de secuencia
 
 ### Descripción
 
-Muestra los mensajes entre la persona que renta, la aplicación web, los módulos de reservaciones y disponibilidad, y la base de datos al crear una reservación.
+Representa el proceso de registrar una reservación en Communna. Muestra cómo el sistema verifica que no existan empalmes antes de guardar una nueva reservación.
 
 ```mermaid
 sequenceDiagram
     actor Persona as Persona que renta
     participant Web as Aplicacion web
-    participant Res as Reservaciones
-    participant Disp as Disponibilidad
+    participant Gestor as GestorReservaciones
+    participant Sala
+    participant Reserva as Reservacion
     participant BD as Base de datos
 
     Persona->>Web: Selecciona fecha y horario
-    Web->>Res: Solicitar reservacion
-    Res->>Disp: Verificar disponibilidad
-    Disp->>BD: Consultar reservaciones existentes
-    BD-->>Disp: Horarios registrados
-    Disp-->>Res: Resultado de disponibilidad
-    alt Horario libre
-        Res->>BD: Guardar reservacion
-        BD-->>Res: Reservacion guardada
-        Res-->>Web: Confirmacion
+    Web->>Gestor: registrarReservacion(usuario, sala, fecha, inicio, fin)
+    Gestor->>Gestor: verificarEmpalme(fecha, inicio, fin)
+    Gestor->>Sala: consultarDisponibilidad(fecha, inicio, fin)
+    Sala->>BD: Consultar reservaciones existentes
+    BD-->>Sala: Horarios registrados
+    Sala-->>Gestor: Disponibilidad
+
+    alt Horario disponible y sin empalmes
+        Gestor->>Reserva: registrar()
+        Reserva->>BD: Guardar reservacion
+        BD-->>Reserva: Reservacion guardada
+        Reserva-->>Gestor: Registro exitoso
+        Gestor-->>Web: Confirmacion
         Web-->>Persona: Muestra reservacion exitosa
     else Horario ocupado
-        Res-->>Web: Horario no disponible
+        Gestor-->>Web: Horario no disponible
         Web-->>Persona: Solicita otro horario
     end
 ```
 
 ### Explicación
 
-El sistema consulta los horarios existentes antes de guardar una nueva reservación. El diagrama también muestra qué ocurre cuando el horario solicitado ya está ocupado.
+La persona que renta selecciona una fecha y un horario. La aplicación web envía la solicitud a GestorReservaciones, que verifica si existe un empalme y consulta la disponibilidad de la sala.
+
+Si el horario está disponible, se ejecuta la operación registrar() de la clase Reservacion y se guarda la información en la base de datos.
+
+Si el horario está ocupado, el sistema solicita seleccionar otro.
+
+### Consistencia con el diagrama de clases
+
+Los mensajes registrarReservacion() y verificarEmpalme() corresponden a operaciones de GestorReservaciones. El mensaje consultarDisponibilidad() corresponde a la clase Sala y registrar() a la clase Reservacion.
+
+Esto permite comprobar que las operaciones utilizadas en el diagrama de secuencia también están definidas en el diagrama de clases.
 
 ---
 
@@ -274,12 +290,14 @@ Una decisión importante es que los usos no se descuentan al realizar una reserv
 
 Representa los estados propuestos para una reservación, se limita al registro y la atención; no se establecen reglas de cancelación porque todavía no están confirmadas.
 
+
 ```mermaid
 stateDiagram-v2
-    [*] --> Registrada: se guarda la reservacion
-    Registrada --> Atendida: se utiliza la sala
+    [*] --> Registrada: Se guarda la reservacion
+    Registrada --> Atendida: Se utiliza la sala
     Atendida --> [*]
 ```
+
 
 ### Explicación
 
