@@ -183,11 +183,12 @@ El sistema consulta los horarios existentes antes de guardar una nueva reservaci
 
 ---
 
+
 ## 6. Diagrama de clases
 
 ### Descripción
 
-Propone las clases principales para representar a las personas usuarias, las reservaciones, la sala y los paquetes. Sus atributos y operaciones son orientativos.
+El diagrama presenta las clases principales de Communna y sus relaciones. Incluye las operaciones necesarias para registrar reservaciones, verificar empalmes y controlar los usos de los paquetes. Es una propuesta de diseño que debe validarse con el cliente.
 
 ```mermaid
 classDiagram
@@ -253,18 +254,18 @@ classDiagram
     GestorReservaciones "1" --> "0..*" Reservacion : administra
 
     note for UsoPaquete "Se registra despues de utilizar la sala"
-'''
-### Explicación
+```
 
 ### Explicación
 
-El diagrama representa las clases principales de Communna: Usuario, Sala, Reservacion, Paquete, UsoPaquete y GestorReservaciones.
+El diagrama representa las clases principales de Communna: Usuario, Sala, Reservacion, Paquete, UsoPaquete y GestorReservaciones, además de la enumeración EstadoReservacion.
 
 GestorReservaciones se encarga de verificar que no existan empalmes antes de registrar una reservación.
 
 La clase Paquete permite consultar los usos disponibles y descontar un uso cuando corresponde. La clase UsoPaquete registra cada utilización de la sala.
 
 Una decisión importante es que los usos no se descuentan al realizar una reservación, sino después de que la sala haya sido utilizada. Esto permite conservar un registro de las reservaciones y controlar correctamente los paquetes.
+
 ---
 
 ## 7. Diagrama de estados
