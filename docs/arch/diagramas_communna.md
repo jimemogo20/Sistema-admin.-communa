@@ -189,7 +189,7 @@ El sistema consulta los horarios existentes antes de guardar una nueva reservaci
 
 Propone las clases principales para representar a las personas usuarias, las reservaciones, la sala y los paquetes. Sus atributos y operaciones son orientativos.
 
-
+```mermaid
 classDiagram
     direction LR
 
@@ -253,7 +253,7 @@ classDiagram
     GestorReservaciones "1" --> "0..*" Reservacion : administra
 
     note for UsoPaquete "Se registra despues de utilizar la sala"
-
+'''
 ### Explicación
 
 ### Explicación
